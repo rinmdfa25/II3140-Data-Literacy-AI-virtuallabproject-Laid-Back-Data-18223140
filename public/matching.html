@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Laid-Back Data - Matching Game</title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body class="bg-gradient-to-r from-green-400 to-teal-800 min-h-screen">
+    <!-- Header -->
+    <header>
+      <nav class="bg-teal-600 p-2 fixed w-full top-0 flex items-center justify-between">
+        <div class="flex flex-wrap">
+          <a href="homepage.html" class="bg-white text-teal-600 ml-12 px-6 py-2 rounded-full font-semibold hover:bg-gray-200 transition-colors inline-block text-center">Back</a>
+        </div>
+        <div class="md:flex items-center space-x-6">
+          <img src="./assets/laidbackdatalogo.png" alt="Laid-Back Data Logo" class="h-9" />
+        </div>
+        <div class="flex justify-center items-center space-x-6">
+          <a href="index.html" class="text-white hover:text-teal-200 transition-colors">Log Out</a>
+        </div>
+      </nav>
+    </header>
+    <!-- End of Header -->
+    <!-- Game Section-->
+    <section>
+      <div class="flex items-center justify-center min-h-screen pt-20 px-4 gap-4">
+        <div class="flex flex-row space-x-8 w-full max-w-4xl justify-center">
+          <div class="bg-gradient-to-r from-blue-400 to-blue-700 text-black shadow-2xl rounded-lg p-6 max-w-md w-full mb-6 flex items-center justify-center">
+            <div id="question-container" class="bg-white text-gray-900 p-4 rounded-lg shadow-md flex items-center justify-center w-full h-full">
+              <div>
+                <div id="question" class="text-lg font-semibold mb-4"></div>
+                <div id="image" class="justify-center place-items-center"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-row space-x-8 w-full max-w-4xl justify-center">
+          <div class="bg-gradient-to-r from-pink-300 to-pink-500 text-black shadow-2xl rounded-lg p-6 max-w-md w-full mb-6 flex items-center justify-center">
+            <div id="answer-container" class="bg-white text-gray-900 p-4 rounded-lg shadow-md flex items-center justify-center w-full h-full">
+              <div id="selected-answer" class="mb-2 text-sm text-blue-700 font-medium"></div>
+              <div id="answer-buttons" class="space-y-2 mb-4"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End of Game Section-->
+    <!-- Footer -->
+    <footer>
+      <div class="bg-teal-600 p-4 text-center text-white">
+        <p>&copy; 2025 Laid-Back Data. All rights reserved.</p>
+      </div>
+    </footer>
+    <!-- End of Footer-->
+    <script src="./js/matching.js"></script>
+  </body>
+</html>

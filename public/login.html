@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <title>Laid-Back Data - Login</title>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <nav class="bg-teal-600 p-2 fixed w-full top-0 flex items-center justify-between">
+        <div class="flex flex-wrap">
+          <a href="index.html" class="bg-white text-teal-600 ml-12 px-6 py-2 rounded-full font-semibold hover:bg-gray-200 transition-colors inline-block text-center">Back</a>
+        </div>
+        <div class="md:flex items-center space-x-6">
+          <img src="./assets/laidbackdatalogo.png" alt="Laid-Back Data Logo" class="h-9" />
+        </div>
+      </nav>
+    </header>
+    <!-- End of Header -->
+    <!-- Login Session-->
+    <section class="login-section">
+      <div class="from-green-400 to-teal-800 bg-gradient-to-r min-h-screen flex items-center justify-center">
+        <!-- Login Form-->
+        <div class="max-w-md bg-sky-600 rounded-lg w-full mt-40 mb-20" id="login">
+          <h2 class="text-4xl md:text-5xl font-bold mb-4 text-white text-center pt-20">Login</h2>
+          <p class="text-lg md:text-xl text-white mb-6 text-center">Welcome back! Please enter your credentials to access your account.</p>
+          <form action="#" method="POST" class="p-6 rounded-lg shadow-md">
+            <div class="mb-4">
+              <label for="username" class="block text-white font-semibold mb-2">Username</label>
+              <input type="text" id="username" name="username" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-600" />
+            </div>
+            <div class="mb-4">
+              <label for="password" class="block text-white font-semibold mb-2">Password</label>
+              <input type="password" id="password" name="password" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-600" />
+            </div>
+            <button type="submit" class="w-full bg-teal-600 text-white py-2 rounded-md hover:bg-teal-700 transition-colors font-semibold mb-8">Login</button>
+            <p class="text-center text-white mt-4">Don't have an account?</p>
+            <a href="register.html"><button type="button" class="w-full text-xs text-white py-2 rounded-md hover:bg-slate-700 transition-colors font-semibold">Click Here for Register!</button> </a>
+          </form>
+          <!-- End of Login Form-->
+        </div>
+      </div>
+    </section>
+    <!-- End of Login Section-->
+    <!-- Footer-->
+    <footer>
+      <div class="bg-teal-600 p-4 text-center text-white">
+        <p>&copy; 2025 Laid-Back Data. All rights reserved.</p>
+      </div>
+    </footer>
+    <!-- End of Footer-->
+    <script src="./js/login.js"></script>
+  </body>
+</html>
