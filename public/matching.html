@@ -22,27 +22,33 @@
       </nav>
     </header>
     <!-- End of Header -->
+
     <!-- Game Section-->
     <section>
       <div class="flex items-center justify-center min-h-screen pt-20 px-4 gap-4">
         <div class="flex flex-row space-x-8 w-full max-w-4xl justify-center">
           <div class="bg-gradient-to-r from-blue-400 to-blue-700 text-black shadow-2xl rounded-lg p-6 max-w-md w-full mb-6 flex items-center justify-center">
-            <div id="question-container" class="bg-white text-gray-900 p-4 rounded-lg shadow-md flex items-center justify-center w-full h-full">
-              <div>
-                <div id="question" class="text-lg font-semibold mb-4"></div>
-                <div id="image" class="justify-center place-items-center"></div>
-              </div>
+            <div id="question-container" class="bg-white text-gray-900 p-4 rounded-lg shadow-md flex flex-col items-center justify-center w-full h-full border-2 border-transparent transition-all">
+              <div id="question" class="text-lg font-semibold mb-4"></div>
+              <div id="image-container" class="justify-center place-items-center mb-4"></div>
+              <div id="feedback" class="bg-gradient-to-t bg-blue-500 text-xl font-bold h-8 mb-4"></div>
+              <div id="right-answer" class="text-lg font-semibold mb-4 text-green-700"></div>
+              <button id="next-btn" class="hidden bg-teal-500 text-white px-4 py-2 rounded-lg mt-2 hover:bg-teal-700 transition-colors">Next</button>
             </div>
           </div>
         </div>
         <div class="flex flex-row space-x-8 w-full max-w-4xl justify-center">
           <div class="bg-gradient-to-r from-pink-300 to-pink-500 text-black shadow-2xl rounded-lg p-6 max-w-md w-full mb-6 flex items-center justify-center">
-            <div id="answer-container" class="bg-white text-gray-900 p-4 rounded-lg shadow-md flex items-center justify-center w-full h-full">
-              <div id="selected-answer" class="mb-2 text-sm text-blue-700 font-medium"></div>
-              <div id="answer-buttons" class="space-y-2 mb-4"></div>
+            <div id="answer-container" class="bg-white text-gray-900 p-4 rounded-lg shadow-md flex flex-col items-center justify-center w-full h-full">
+              <div id="selected-answer" class="mb-2 text-sm bg-pink-200 text-blue-700 font-medium"></div>
+              <div id="answer-buttons" class="flex flex-wrap gap-4 w-full"></div>
             </div>
           </div>
         </div>
+      </div>
+      <!-- Move the restart button below the two containers -->
+      <div class="w-24 max-w-4xl mb-12 mx-auto flex justify-center">
+        <button id="restart-btn" class="mt-2 w-full bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white py-2 rounded-lg">Restart</button>
       </div>
     </section>
     <!-- End of Game Section-->

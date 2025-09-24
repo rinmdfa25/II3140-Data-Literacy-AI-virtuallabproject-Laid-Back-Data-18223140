@@ -91,9 +91,9 @@ const questions = [
   },
   {
     question: "Rin wants to show her visualization in a Jupyter Notebook. What module that she should use?",
-    options: ["Seaborn", "Plotly", "Matplotlib", "Bokeh"],
+    options: ["Keras", "Plotly", "Matplotlib", "Bokeh"],
     answers: [
-      { text: "Seaborn", correct: false },
+      { text: "Keras", correct: false },
       { text: "Plotly", correct: false },
       { text: "Matplotlib", correct: true },
       { text: "Bokeh", correct: false },
@@ -244,11 +244,7 @@ function showScore() {
   resetState();
   quizContent.classList.add("hidden");
   scoreContainer.classList.remove("hidden");
-  scoreElement.innerHTML = score;
-  totalQuestionsElement.innerHTML = questions.length;
-  let percentage = (score / questions.length) * 100;
-  let grade = percentage;
-  document.getElementById("grade").innerText = grade;
+  updateScoreUI(score, questions.length);
   nextButton.innerHTML = "Finish";
   nextButton.classList.add("hidden");
 }
@@ -266,10 +262,6 @@ function handleRestartButton() {
   startQuiz();
 }
 
-nextButton.addEventListener("click", handleNextButton);
-restartButton.addEventListener("click", handleRestartButton);
-
-startQuiz();
 function updateScoreUI(score, total) {
   document.getElementById("score").textContent = score;
   document.getElementById("total-questions").textContent = total;
@@ -283,15 +275,6 @@ function updateScoreUI(score, total) {
     document.getElementById("fail-actions").classList.remove("hidden");
     document.getElementById("pass-actions").classList.add("hidden");
   }
-}
-
-function showScore() {
-  resetState();
-  quizContent.classList.add("hidden");
-  scoreContainer.classList.remove("hidden");
-  updateScoreUI(score, questions.length);
-  nextButton.innerHTML = "Finish";
-  nextButton.classList.add("hidden");
 }
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -314,3 +297,8 @@ document.addEventListener("DOMContentLoaded", function () {
     };
   }
 });
+
+nextButton.addEventListener("click", handleNextButton);
+restartButton.addEventListener("click", handleRestartButton);
+
+startQuiz();

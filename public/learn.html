@@ -6,7 +6,7 @@
     <title>Laid-Back Data - Learn</title>
     <link rel="stylesheet" href="./css/style.css" />
   </head>
-  <body>
+  <body class="bg-gradient-to-r from-green-400 to-teal-800 min-h-screen">
     <!-- Header -->
     <header>
       <nav class="bg-teal-600 p-2 fixed w-full top-0 flex items-center justify-between">
@@ -22,117 +22,319 @@
       </nav>
     </header>
     <!-- End of Header -->
-    <!-- Learn Section -->
-    <!-- Introduction-->
-    <section class="introduction" id="introduction">
+    <!-- Learn Time -->
+    <!-- Introduction Section -->
+    <section class="hero">
       <div class="from-green-400 to-teal-800 bg-gradient-to-r min-h-screen flex flex-col md:flex-row items-center justify-center md:gap-6">
-        <div class="w-full md:w-1/2 flex justify-center md:justify-self-center md:pr-4 mb-6 md:mb-0">
-          <img src="./assets/data.png" class="w-48 md:w-80" alt="Data Image" />
+        <div class="w-full flex transition-transform duration-500 ease-in-out md:w-1/2 flex-col items-center relative space-y-6">
+          <img id="carousel-image" src="./assets/data.png" alt="Carousel Image" class="w-48 md:w-56 relative mb-4" />
         </div>
-        <div class="w-full md:w-1/2 text-center justify-self-auto md:text-left">
-          <h1 class="text-4xl md:text-5xl font-bold mb-4 text-white text-start">What is Data?</h1>
-          <p class="text-lg md:text-xl text-white text-start">
-            Data is a collection of facts, numbers, words, observations or other useful information. Through data processing and data analysis, organizations transform raw data points into valuable insights that improve decision-making and
-            drive better business outcomes.
+        <div class="w-full md:w-1/2 text-center md:text-center">
+          <h1 class="text-4xl md:text-5xl font-bold mb-4 text-white text-center">It's Time To Learn!!!</h1>
+          <p class="text-lg md:text-xl text-white mb-6 justify-self-center">
+            Rin found some great resources for you to learn. She wants you with her to learn the data together by watching videos together. Make sure to watch and understanding all of them before continuing the next journey
           </p>
         </div>
       </div>
     </section>
-    <!-- End of Introduction -->
-    <!-- About Data Science-->
-    <section class="about-data-science" id="about-data-science">
-      <div class="from-green-400 to-teal-800 bg-gradient-to-r min-h-screen w-full flex items-center justify-center p-6">
-        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center text-end justify-right md:gap-6 w-full">
-          <div class="w-full md:w-1/2 text-center md:text-end mb-4 md:mb-0">
-            <h2 class="text-4xl md:text-5xl font-bold mb-4 text-white leading-tight">About Data Science</h2>
-            <p class="text-lg md:text-xl text-white mt-4">
-              Data Science is a multidisciplinary field that uses scientific methods, processes, algorithms and systems to extract knowledge and insights from structured and unstructured data. It combines expertise from statistics, computer
-              science, and domain knowledge to turn data into actionable insights.
-            </p>
-            <p class="text-lg md:text-xl text-white mt-4">
-              Data Science involves various techniques such as data mining, machine learning, predictive analytics, and data visualization to analyze large datasets and uncover patterns, trends, and correlations. It plays a crucial role in
-              decision-making across industries such as healthcare, finance, marketing, and technology.
-            </p>
+    <!-- End of Introduction Section -->
+    <!-- Data Literacy Introduction -->
+    <section class="dataliteracy" id="dataliteracy">
+      <h1 class="text-4xl md:text-5xl font-bold mb-8 text-white text-center">Data Literacy Basics</h1>
+      <div class="from-green-400 to-teal-800 bg-gradient-to-r flex flex-col md:flex-row items-center justify-center md:gap-2 mx-auto max-w-5xl">
+        <!-- Video Box 1 -->
+        <div class="bg-gradient-to-r from-pink-300 to-pink-500 text-black shadow-2xl rounded-lg p-4 max-w-xs w-full flex-nowrap mb-6 mx-2">
+          <div class="bg-white text-gray-900 p-3 rounded-lg shadow-md">
+            <iframe
+              class="w-full rounded-lg mb-2"
+              height="160"
+              src="https://www.youtube.com/embed/yhO_t-c3yJY"
+              title="What is Data? | Data Literacy Basics"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+            <h2 class="text-lg md:text-xl text-center font-bold text-black">What is Data?</h2>
           </div>
-          <div class="w-full flex transition-transform duration-500 ease-in-out md:w-1/2 flex-col items-center relative space-y-6">
-            <img id="carousel-image" src="./assets/datamining.png" alt="Carousel Image" class="w-48 md:w-56 relative mb-4" />
+        </div>
+        <!-- Video Box 2 -->
+        <div class="bg-gradient-to-r from-pink-300 to-pink-500 text-black shadow-2xl rounded-lg p-4 max-w-xs w-full flex-nowrap mb-6 mx-2">
+          <div class="bg-white text-gray-900 p-3 rounded-lg shadow-md">
+            <iframe
+              class="w-full rounded-lg mb-2"
+              height="160"
+              src="https://www.youtube.com/embed/zGFuj9tF33Q?list=PLID58IQe16nE-1980HOGDWsvf0skE2jvS&index=5"
+              title="Collect and Understand Data | Data Literacy Basics"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+            <h2 class="text-lg md:text-xl text-center font-bold text-black">Collect and Understand Data</h2>
+          </div>
+        </div>
+        <!-- Video Box 3 -->
+        <div class="bg-gradient-to-r from-pink-300 to-pink-500 text-black shadow-2xl rounded-lg p-4 max-w-xs w-full flex-nowrap mb-6 mx-2">
+          <div class="bg-white text-gray-900 p-3 rounded-lg shadow-md">
+            <iframe
+              class="w-full rounded-lg mb-2"
+              height="160"
+              src="https://www.youtube.com/embed/YDT5ZPcMZWM?list=PLID58IQe16nE-1980HOGDWsvf0skE2jvS&index=4"
+              title="Visualization Data | Data Literacy Basics"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+            <h2 class="text-lg md:text-xl text-center font-bold text-black">Data Visualization</h2>
           </div>
         </div>
       </div>
     </section>
-    <!-- End of About Data Science-->
+
+    <section class="dataliteracy" id="dataliteracy">
+      <div class="from-green-400 to-teal-800 bg-gradient-to-r flex flex-col md:flex-row items-center justify-center md:gap-2 mx-auto max-w-5xl">
+        <!-- Video Box 4 -->
+        <div class="bg-gradient-to-r from-pink-300 to-pink-500 text-black shadow-2xl rounded-lg p-4 max-w-xs w-full flex-nowrap mb-6 mx-2">
+          <div class="bg-white text-gray-900 p-3 rounded-lg shadow-md">
+            <iframe
+              class="w-full rounded-lg mb-2"
+              height="160"
+              src="https://www.youtube.com/embed/nd_oOOXeN3A?list=PLID58IQe16nE-1980HOGDWsvf0skE2jvS&index=3"
+              title="Data Misconceptions | Data Literacy Basics"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+            <h2 class="text-lg md:text-xl text-center font-bold text-black">Data Misconceptions</h2>
+          </div>
+        </div>
+        <!-- Video Box 5 -->
+        <div class="bg-gradient-to-r from-pink-300 to-pink-500 text-black shadow-2xl rounded-lg p-4 max-w-xs w-full flex-nowrap mb-6 mx-2">
+          <div class="bg-white text-gray-900 p-3 rounded-lg shadow-md">
+            <iframe
+              class="w-full rounded-lg mb-2"
+              height="160"
+              src="https://www.youtube.com/embed/HQ4dboRW7tM?list=PLID58IQe16nE-1980HOGDWsvf0skE2jvS&index=14"
+              title="Data Mistakes | Data Literacy Basics"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+            <h2 class="text-lg md:text-xl text-center font-bold text-black">Data Mistakes</h2>
+          </div>
+        </div>
+        <!-- Video Box 6 -->
+        <div class="bg-gradient-to-r from-pink-300 to-pink-500 text-black shadow-2xl rounded-lg p-4 max-w-xs w-full flex-nowrap mb-6 mx-2">
+          <div class="bg-white text-gray-900 p-3 rounded-lg shadow-md">
+            <iframe
+              class="w-full rounded-lg mb-2"
+              height="160"
+              src="https://www.youtube.com/embed/oYcG5OxkMZU?list=PLID58IQe16nE-1980HOGDWsvf0skE2jvS&index=15"
+              title="Data Context | Data Literacy Basics"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+            <h2 class="text-lg md:text-xl text-center font-bold text-black">Data Context</h2>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End of Data Literacy -->
     <!-- Tools -->
+    <section class="tools" id="tools" style="margin-top: 3rem">
+      <h1 class="text-4xl md:text-5xl font-bold mb-8 text-white text-center">Data Literacy Tools</h1>
+      <div class="from-green-400 to-teal-800 bg-gradient-to-r flex flex-col md:flex-row items-center justify-center md:gap-2 mx-auto max-w-5xl">
+        <!-- Video Box 7 -->
+        <div class="bg-gradient-to-r from-pink-300 to-pink-500 text-black shadow-2xl rounded-lg p-4 max-w-xs w-full flex-nowrap mb-6 mx-2">
+          <div class="bg-white text-gray-900 p-3 rounded-lg shadow-md">
+            <iframe
+              class="w-full rounded-lg mb-2"
+              height="160"
+              src="https://www.youtube.com/embed/4c_mwnYdbhQ"
+              title="Introduction to NumPy | Data Literacy Basics"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+            <h2 class="text-lg md:text-xl text-center font-bold text-black">Introduction to NumPy</h2>
+          </div>
+        </div>
+        <!-- Video Box 8 -->
+        <div class="bg-gradient-to-r from-pink-300 to-pink-500 text-black shadow-2xl rounded-lg p-4 max-w-xs w-full flex-nowrap mb-6 mx-2">
+          <div class="bg-white text-gray-900 p-3 rounded-lg shadow-md">
+            <iframe
+              class="w-full rounded-lg mb-2"
+              height="160"
+              src="https://www.youtube.com/embed/EhYC02PD_gc"
+              title="Introduction to Pandas | Data Literacy Basics"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+            <h2 class="text-lg md:text-xl text-center font-bold text-black">Introduction to Pandas</h2>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="tools" id="tools">
-      <div class="from-green-400 to-teal-800 bg-gradient-to-r min-h-screen flex flex-col md:flex-row items-center justify-center md:gap-6">
-        <div class="w-full md:w-1/2 flex justify-center md:justify-self-center md:pr-4 mb-6 md:mb-0">
-          <img src="./assets/python.png" class="w-48 md:w-80" alt="Pandas Image" />
+      <div class="from-green-400 to-teal-800 bg-gradient-to-r flex flex-col md:flex-row items-center justify-center md:gap-2 mx-auto max-w-5xl">
+        <!-- Video Box 9 -->
+        <div class="bg-gradient-to-r from-pink-300 to-pink-500 text-black shadow-2xl rounded-lg p-4 max-w-xs w-full flex-nowrap mb-6 mx-2">
+          <div class="bg-white text-gray-900 p-3 rounded-lg shadow-md">
+            <iframe
+              class="w-full rounded-lg mb-2"
+              height="160"
+              src="https://www.youtube.com/embed/OZOOLe2imFo"
+              title="Introduction to Matplotlib | Data Literacy Basics"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+            <h2 class="text-lg md:text-xl text-center font-bold text-black">Introduction to Matplotlib</h2>
+          </div>
         </div>
-        <div class="w-full md:w-1/2 text-center justify-self-auto md:text-left">
-          <h1 class="text-4xl md:text-5xl font-bold mb-4 text-white text-start">Tools</h1>
-          <p class="text-lg md:text-xl text-white justify-self-center">
-            You can use many of tools with the help from the community and online resources.Some of the most popular tools are Python, R, SQL, Jupyter Notebooks, Tableau, Excel, and Power BI.
-          </p>
+        <!-- Video Box 10 -->
+        <div class="bg-gradient-to-r from-pink-300 to-pink-500 text-black shadow-2xl rounded-lg p-4 max-w-xs w-full flex-nowrap mb-6 mx-2">
+          <div class="bg-white text-gray-900 p-3 rounded-lg shadow-md">
+            <iframe
+              class="w-full rounded-lg mb-2"
+              height="160"
+              src="https://www.youtube.com/embed/ooqXQ37XHMM"
+              title="Introduction to Seaborn | Data Literacy Basics"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+            <h2 class="text-lg md:text-xl text-center font-bold text-black">Introduction to Seaborn</h2>
+          </div>
         </div>
       </div>
     </section>
+
     <!-- End of Tools-->
-    <!-- Learn The Basic -->
-    <section class="learn-basic" id="learn-basic">
-      <div class="from-green-400 to-teal-800 bg-gradient-to-r min-h-screen w-full flex items-center justify-center p-6">
-        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center text-end justify-right md:gap-6 w-full">
-          <div class="w-full md:w-1/2 text-center md:text-end mb-4 md:mb-0">
-            <h2 class="text-4xl md:text-5xl font-bold mb-4 text-white leading-tight">Learn The Basics</h2>
-            <p class="text-lg md:text-xl text-white mt-4">First of all, we learn the basics of data literacy using Python and it's module, Pandas and matplotlib</p>
-            <p class="text-lg md:text-xl text-white mt-4">
-              Pandas is a powerful open-source data analysis and manipulation library for Python. It provides data structures like DataFrames and Series, which make it easy to handle and analyze structured data. With Pandas, you can perform
-              tasks such as data cleaning, transformation, aggregation, and visualization efficiently.
-            </p>
-            <p class="text-lg md:text-xl text-white mt-4">
-              Matplotlib is a widely used data visualization library in Python. It allows you to create static, animated, and interactive visualizations such as line plots, bar charts, histograms, scatter plots, and more. Matplotlib
-              provides a flexible and customizable interface for creating high-quality visual representations of data, making it an essential tool for data analysis and exploration.
-            </p>
+    <!-- AI Section -->
+    <section class="ai" id="ai" style="margin-top: 3rem">
+      <h1 class="text-4xl md:text-5xl font-bold mb-8 text-white text-center">Artificial Intelligence Basics</h1>
+      <div class="from-green-400 to-teal-800 bg-gradient-to-r flex flex-col md:flex-row items-center justify-center md:gap-2 mx-auto max-w-5xl">
+        <!-- Video Box 11 -->
+        <div class="bg-gradient-to-r from-pink-300 to-pink-500 text-black shadow-2xl rounded-lg p-4 max-w-xs w-full flex-nowrap mb-6 mx-2">
+          <div class="bg-white text-gray-900 p-3 rounded-lg shadow-md">
+            <iframe
+              class="w-full rounded-lg mb-2"
+              height="160"
+              src="https://www.youtube.com/embed/a0_lo_GDcFw?list=PL8dPuuaLjXtO65LeD2p4_Sb5XQ51par_b&index=2"
+              title="What is A.I? | Data Literacy Basics"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+            <h2 class="text-lg md:text-xl text-center font-bold text-black">What is A.I?</h2>
           </div>
-          <div class="w-full md:w-1/2 flex flex-col items-center">
-            <img src="./assets/pandas.png" alt="Pandas Image" class="w-48 mb-4 md:w-80 mt-4" />
-            <img src="./assets/matplotlib.svg" alt="Matplotlib Image" class="w-48 mb-4 md:w-80 mt-4" />
+        </div>
+        <!-- Video Box 12 -->
+        <div class="bg-gradient-to-r from-pink-300 to-pink-500 text-black shadow-2xl rounded-lg p-4 max-w-xs w-full flex-nowrap mb-6 mx-2">
+          <div class="bg-white text-gray-900 p-3 rounded-lg shadow-md">
+            <iframe
+              class="w-full rounded-lg mb-2"
+              height="160"
+              src="https://www.youtube.com/embed/fXizBc03D7E"
+              title="A.I. Agents | Data Literacy Basics"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+            <h2 class="text-lg md:text-xl text-center font-bold text-black">A.I. Agents</h2>
+          </div>
+        </div>
+        <!-- Video Box 13 -->
+        <div class="bg-gradient-to-r from-pink-300 to-pink-500 text-black shadow-2xl rounded-lg p-4 max-w-xs w-full flex-nowrap mb-6 mx-2">
+          <div class="bg-white text-gray-900 p-3 rounded-lg shadow-md">
+            <iframe
+              class="w-full rounded-lg mb-2"
+              height="160"
+              src="https://www.youtube.com/embed/cS-198wtfj0"
+              title="BFS & DFS Algorithms | Data Literacy Basics"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+            <h2 class="text-lg md:text-xl text-center font-bold text-black">BFS & DFS Algorithms</h2>
           </div>
         </div>
       </div>
     </section>
-    <!-- End of Learn of Basic Section -->
-    <!-- Example Section -->
-    <section class="examples" id="examples">
+    <section class="ai" id="ai">
+      <div class="from-green-400 to-teal-800 bg-gradient-to-r flex flex-col md:flex-row items-center justify-center md:gap-2 mx-auto max-w-5xl">
+        <!-- Video Box 14 -->
+        <div class="bg-gradient-to-r from-pink-300 to-pink-500 text-black shadow-2xl rounded-lg p-4 max-w-xs w-full flex-nowrap mb-6 mx-2">
+          <div class="bg-white text-gray-900 p-3 rounded-lg shadow-md">
+            <iframe
+              class="w-full rounded-lg mb-2"
+              height="160"
+              src="https://www.youtube.com/embed/4qVRBYAdLAo?list=PL8dPuuaLjXtO65LeD2p4_Sb5XQ51par_b&index=3"
+              title="Supervised Learning | Data Literacy Basics"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+            <h2 class="text-lg md:text-xl text-center font-bold text-black">Supervised Learning</h2>
+          </div>
+        </div>
+        <!-- Video Box 15 -->
+        <div class="bg-gradient-to-r from-pink-300 to-pink-500 text-black shadow-2xl rounded-lg p-4 max-w-xs w-full flex-nowrap mb-6 mx-2">
+          <div class="bg-white text-gray-900 p-3 rounded-lg shadow-md">
+            <iframe
+              class="w-full rounded-lg mb-2"
+              height="160"
+              src="https://www.youtube.com/embed/JnnaDNNb380?list=PL8dPuuaLjXtO65LeD2p4_Sb5XQ51par_b&index=7"
+              title="Unsupervised Learning | Data Literacy Basics"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+            <h2 class="text-lg md:text-xl text-center font-bold text-black">Unsupervised Learning</h2>
+          </div>
+        </div>
+        <!-- Video Box 16 -->
+        <div class="bg-gradient-to-r from-pink-300 to-pink-500 text-black shadow-2xl rounded-lg p-4 max-w-xs w-full flex-nowrap mb-6 mx-2">
+          <div class="bg-white text-gray-900 p-3 rounded-lg shadow-md">
+            <iframe
+              class="w-full rounded-lg mb-2"
+              height="160"
+              src="https://www.youtube.com/embed/nIgIv4IfJ6s?list=PL8dPuuaLjXtO65LeD2p4_Sb5XQ51par_b&index=10"
+              title="Reinforcement Learning | Data Literacy Basics"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+            <h2 class="text-lg md:text-xl text-center font-bold text-black">Reinforcement Learning</h2>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End of AI Section -->
+    <!-- Cheatsheets Section -->
+    <section class="cheatsheets" id="cheatsheets" style="margin-top: 3rem">
       <div class="from-green-400 to-teal-800 bg-gradient-to-r min-h-screen flex flex-col md:flex-row items-center justify-center md:gap-6">
         <div class="w-full md:w-1/2 flex flex-col items-center gap-4">
-          <img src="./assets/example2.png" class="" alt="Example2 Image" />
-          <img src="./assets/example3.png" class="" alt="Example3 Image" />
-        </div>
-
-        <div class="w-full md:w-1/2 text-center justify-self-auto md:text-left">
-          <h1 class="text-4xl md:text-5xl font-bold mb-4 text-white text-start">Here's How you Use it...</h1>
-          <p class="text-lg md:text-xl text-white justify-normal">
-            First you need a Dataset to be analysed. Next thing to do, you import the data using pandas. You can use pandas to read the data files such as CSV files or Excel Spreadsheets by using pd.read_csv or pd.read_xlsx
-          </p>
-          <p class="text-lg md:text-xl text-white justify-normal">
-            After importing the data, you can use pandas to explore and manipulate the data. You can use functions like head(), info(), describe(), and value_counts() to get a better understanding of the data. You can even look for the data
-            you want to see by using loc functions or anything else.
-          </p>
-          <p class="text-lg md:text-xl text-white justify-normal">
-            Once you have explored and manipulated the data, you can use matplotlib to create visualizations of the data. You can use functions like plot(), scatter(), bar(), and hist() to create different types of plots. You can also
-            customize the plots by adding titles, labels, and legends.
-          </p>
-          <p class="text-lg md:text-xl text-white justify-normal">
-            Finally, you can save your visualizations as image files or display them in a Jupyter Notebook. This allows you to share your findings with others or include them in reports and presentations.
-          </p>
-          <p class="text-lg mb-8 md:text-lg text-white justify-normal">For more information, you can learn more from pandas and matplotlib documentation. Using the button below!</p>
+          <a href="https://numpy.org/doc/stable/" class="bg-white text-teal-600 px-6 py-3 rounded-full font-semibold hover:bg-gray-200 transition-colors inline-block text-center">NumPy</a>
           <a href="https://pandas.pydata.org/docs/" class="bg-white text-teal-600 px-6 py-3 rounded-full font-semibold hover:bg-gray-200 transition-colors inline-block text-center">Pandas</a>
           <a href="https://matplotlib.org/stable/contents.html" class="bg-white text-teal-600 px-6 py-3 rounded-full font-semibold hover:bg-gray-200 transition-colors inline-block text-center">Matplotlib</a>
+          <a href="https://seaborn.pydata.org/" class="bg-white text-teal-600 px-6 py-3 rounded-full font-semibold hover:bg-gray-200 transition-colors inline-block text-center">Seaborn</a>
+        </div>
+        <div class="w-full md:w-1/2 text-center justify-self-auto md:text-left">
+          <h1 class="text-4xl md:text-5xl font-bold mb-4 text-white text-start">Hooray! You've already watched the videos!</h1>
+          <p class="text-lg mb-8 md:text-lg text-white justify-normal">
+            Now...Rin found something to help your knowledge. She found tools documentation to help you memorize and understand what you have been through. For more information, you can learn more from pandas and matplotlib documentation.
+            Using the button on the left side!
+          </p>
         </div>
       </div>
     </section>
-    <!-- End of Example Section-->
+    <!-- End of Cheatsheets Section-->
     <!-- Game Time -->
-    <section class="game-time" id="game-time">
+    <section class="game-time" id="game-time" style="margin-top: 3rem">
       <div class="from-green-400 to-teal-800 bg-gradient-to-r min-h-screen flex flex-col md:flex-row items-center justify-center md:gap-6">
         <div class="w-full md:w-1/2 text-center items-center md:text-center">
           <h1 class="text-4xl md:text-5xl font-bold mb-4 text-white text-center">Game Time!</h1>
