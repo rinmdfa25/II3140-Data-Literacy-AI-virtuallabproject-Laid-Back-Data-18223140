@@ -5,7 +5,7 @@ document.getElementById("login").addEventListener("submit", function (event) {
   let password = document.getElementById("password").value;
 
   // Just use temporary username and password
-  if (username === "datalaidback" && password === "akucintadata") {
+  if (username === "datalaidback" && password === "laiddataback") {
     alert("Login successful!");
     window.location.href = "./homepage.html";
   } else {

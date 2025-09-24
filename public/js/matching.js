@@ -194,6 +194,11 @@ function startQuiz() {
 function showQuestion() {
   resetState();
 
+  // Show the restart button on each question
+  if (restartButton) {
+    restartButton.classList.remove("hidden");
+  }
+
   const currentQuestion = questions[currentQuestionIndex];
   if (!dropZone.querySelector(".bg-pink-200")) {
     dropZone.innerHTML = '<span class="text-gray-400 select-none "></span>';
@@ -215,30 +220,49 @@ function showQuestion() {
   img.alt = "Question Image";
   img.className = "max-w-xs rounded-lg shadow-md";
   imageContainer.appendChild(img);
+  // Create two containers for left and right answers
+  let leftAnswersContainer = document.createElement("div");
+  let rightAnswersContainer = document.createElement("div");
+  leftAnswersContainer.className = "flex flex-col gap-2 w-1/2 pr-2";
+  rightAnswersContainer.className = "flex flex-col gap-2 w-1/2 pl-2";
 
+  // Split answers into left (first 5) and right (last 5)
   currentQuestion.answers.forEach((answer, index) => {
-    if (!dropZone.querySelector(`#answer-${index}`)) {
-      const answerWrapper = document.createElement("div");
-      answerWrapper.className = "answer-wrapper mb-2 flex justify-center";
-      answerWrapper.style.width = "100%";
+    const answerWrapper = document.createElement("div");
+    answerWrapper.className = "answer-wrapper mb-2 flex justify-center";
+    answerWrapper.style.width = "100%";
 
-      const answerDiv = document.createElement("div");
-      answerDiv.id = "answer-" + index;
-      answerDiv.textContent = answer.text;
-      answerDiv.draggable = true;
-      answerDiv.dataset.correct = answer.correct;
-      answerDiv.className = "bg-pink-200 text-pink-800 font-semibold p-3 px-5 rounded-full cursor-grab transition-all gap-2 flex items-center border-2 border-dashed border-gray-400";
-      answerDiv.classList.remove("border-green-500", "border-red-500", "border-green-400", "border-2", "border-dashed", "border-gray-400");
-      answerDiv.style.marginBottom = "0.5rem";
+    const answerDiv = document.createElement("div");
+    answerDiv.id = "answer-" + index;
+    answerDiv.textContent = answer.text;
+    answerDiv.draggable = true;
+    answerDiv.dataset.correct = answer.correct;
+    answerDiv.className = "bg-pink-200 text-pink-800 font-semibold p-3 px-5 rounded-full cursor-grab transition-all gap-2 flex items-center border-2 border-dashed border-gray-400";
+    answerDiv.classList.remove("border-green-500", "border-red-500", "border-green-400", "border-2", "border-dashed", "border-gray-400");
+    answerDiv.style.marginBottom = "0.5rem";
 
-      answerDiv.addEventListener("dragstart", (event) => {
-        event.dataTransfer.setData("text/plain", answerDiv.id);
-      });
+    answerDiv.addEventListener("dragstart", (event) => {
+      event.dataTransfer.setData("text/plain", answerDiv.id);
+    });
 
-      answerWrapper.appendChild(answerDiv);
-      answerButtonsContainer.appendChild(answerWrapper);
+    answerWrapper.appendChild(answerDiv);
+
+    if (index < 5) {
+      leftAnswersContainer.appendChild(answerWrapper);
+    } else {
+      rightAnswersContainer.appendChild(answerWrapper);
     }
   });
+
+  rightAnswersContainer.style.marginLeft = "2rem";
+
+  let splitContainer = document.createElement("div");
+  splitContainer.className = "flex flex-row w-full";
+  splitContainer.appendChild(leftAnswersContainer);
+  splitContainer.appendChild(rightAnswersContainer);
+
+  answerButtonsContainer.innerHTML = "";
+  answerButtonsContainer.appendChild(splitContainer);
 }
 
 function resetState() {
@@ -340,10 +364,6 @@ function handleRestartButton() {
 }
 
 nextButton.addEventListener("click", handleNextButton);
-if (restartButton) {
-  restartButton.addEventListener("click", handleRestartButton);
-}
-startQuiz();
 if (restartButton) {
   restartButton.addEventListener("click", () => {
     restartButton.classList.add("hidden");

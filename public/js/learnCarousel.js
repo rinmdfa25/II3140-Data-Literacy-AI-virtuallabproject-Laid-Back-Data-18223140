@@ -24,7 +24,6 @@ setInterval(() => {
     imgEl.alt = learnImages[current].alt;
     imgEl.classList.remove("fade-out");
     imgEl.classList.add("fade-in");
-    imgEl.style.zIndex = "0";
     setTimeout(() => {
       imgEl.classList.remove("fade-in");
     }, 300);
