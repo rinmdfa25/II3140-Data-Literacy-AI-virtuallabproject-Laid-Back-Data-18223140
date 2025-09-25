@@ -18,7 +18,8 @@ Before you run it in your local machine, make sure you have these installed:<br/
 
 - Clone this Repository into your local machine
 
-```git clone https://github.com/rinmdfa25/II3140-Data-Literacy-AI-virtuallabproject-Laid-Back-Data-18223140.git
+```
+git clone https://github.com/rinmdfa25/II3140-Data-Literacy-AI-virtuallabproject-Laid-Back-Data-18223140.git
 cd virtual-lab-project
 ```
 
