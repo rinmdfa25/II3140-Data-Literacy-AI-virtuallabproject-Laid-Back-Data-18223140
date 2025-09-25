@@ -1,7 +1,7 @@
 const landingpageImages = [
   { src: "./assets/python.png", alt: "Python" },
   { src: "./assets/statistics.png", alt: "Statistics Image" },
-  { src: "./assets/AI.png", alt: "AI Image" },
+  { src: "./assets/ai.png", alt: "AI Image" },
 ];
 
 let current = 0;
