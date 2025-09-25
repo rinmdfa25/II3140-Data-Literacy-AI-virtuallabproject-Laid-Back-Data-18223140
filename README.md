@@ -36,3 +36,23 @@ npm run dev
 ```
 
 - Open with Live Server
+
+```
+https://localhost:5500/public/index.html
+```
+
+## Features
+
+- Interactive Learning System
+  ![Laid-Back Data - learning](/docs/learningpage-videocourse.png)
+
+Users can watch videos and can access documentation. The subject of each course
+represents the introduction of Data Literacy and Artificial Inteligence within the tools that they need<br/>
+
+- Quizzez
+  ![Laid-Back Data - Quiz](/docs/quizpage.png)
+  After users learn of the basic fundamental of Data Literacy and Artificial Inteligence. Users have challenge of answering all the quiz questions to help remembering of what they're learned</br>
+
+- Matching Words and Image
+  ![Laid-Back Data - Matching Words](/docs/matchingpage.png)
+  Not only Quiz, users also have challenge of matching the words that being shown on and match the right word with the image
