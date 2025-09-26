@@ -8,6 +8,12 @@
 
 Laid-Back Data is an inovation of virtualization lab of WI2002 - Data Literation & Articial Inteligence subjects. Laid-Back Data were inspired from one of the interactive learning of Data Science named Data Camp and a TV animation named Laid-Back Camp. Laid-Back Data brought to you into the introduction of Data Literacy and the world of A.I. while you learn it without any anxiety<br/>
 
+## Tools:
+
+- HTML Semantic
+- Tailwind CSS
+- Vanilla JS</br>
+
 ## Prerequirement
 
 Before you run it in your local machine, make sure you have these installed:<br/>
@@ -35,11 +41,7 @@ npm install
 npm run dev
 ```
 
-- Open with Live Server
-
-```
-https://localhost:5500/public/index.html
-```
+- Open with Live Server or open the index.html file
 
 ## Features
 
