@@ -9,11 +9,11 @@ const compat = new FlatCompat({
   baseDirectory: __dirname,
 });
 
-const eslintConfig = [...compat.extends("next/core-web-vitals", "next/javascript")];
+const eslintConfig = [...compat.extends("next/core-web-vitals", "eslint:recommended", "plugin:react/recommended")];
 
 eslintConfig.push({
   rules: {
-    "react-hooks/exhautive-deps": "off",
+    "react-hooks/exhaustive-deps": "off",
     "react/jsx-key": "off",
     "@javascript-eslint/no-explicit-any": "off",
     "@javascript-eslint/no-unused-vars": "off",
