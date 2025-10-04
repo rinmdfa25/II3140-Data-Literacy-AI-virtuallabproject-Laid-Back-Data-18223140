@@ -3,11 +3,11 @@
 import React, { useEffect } from "react";
 import "./globals.css";
 
-export default function HomePage() {
+export default function LandingPage() {
   const landingpageImages = [
-    { src: "./assets/python.png", alt: "Python" },
-    { src: "./assets/statistics.png", alt: "Statistics Image" },
-    { src: "./assets/ai.png", alt: "AI Image" },
+    { src: "/assets/python.png", alt: "Python" },
+    { src: "/assets/statistics.png", alt: "Statistics Image" },
+    { src: "/assets/ai.png", alt: "AI Image" },
   ];
 
   const [current, setCurrent] = React.useState(0);
@@ -33,7 +33,7 @@ export default function HomePage() {
       <section className="hero">
         <div className="from-green-400 to-teal-800 bg-gradient-to-r min-h-screen flex flex-col md:flex-row items-center justify-center md:gap-6">
           <div className="w-full md:w-1/2 flex justify-center md:justify-self-center md:pr-4 mb-6 md:mb-2">
-            <img src="./assets/datacamp.png" alt="Data Camp" className="w-48 md:w-80" />
+            <img src="/assets/datacamp.png" alt="Data Camp" className="w-48 md:w-80" />
           </div>
           <div className="w-full md:w-1/2 text-center md:text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white text-center">Laid-Back Data</h1>

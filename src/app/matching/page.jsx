@@ -21,7 +21,7 @@ const questions = [
   },
   {
     question: "Rin want to see this output. What the function is used: ",
-    image: "./assets/game2.png",
+    image: "/assets/game2.png",
     answers: [
       { text: "info", correct: false, draggable: true },
       { text: "hist", correct: false, draggable: true },
@@ -37,7 +37,7 @@ const questions = [
   },
   {
     question: "Rin want to see this output. What the function is use: ",
-    image: "./assets/game3.png",
+    image: "/assets/game3.png",
     answers: [
       { text: "info", correct: false, draggable: true },
       { text: "hist", correct: false, draggable: true },
@@ -53,7 +53,7 @@ const questions = [
   },
   {
     question: "Rin want to see this output. What the function is use: ",
-    image: "./assets/game4.png",
+    image: "/assets/game4.png",
     answers: [
       { text: "info", correct: false, draggable: true },
       { text: "hist", correct: false, draggable: true },
@@ -69,7 +69,7 @@ const questions = [
   },
   {
     question: "Rin want to see this output. What the function is use: ",
-    image: "./assets/game5.png",
+    image: "/assets/game5.png",
     answers: [
       { text: "info", correct: false, draggable: true },
       { text: "hist", correct: false, draggable: true },
@@ -85,7 +85,7 @@ const questions = [
   },
   {
     question: "Rin want to see this output. What the function is used: ",
-    image: "./assets/game6.png",
+    image: "/assets/game6.png",
     answers: [
       { text: "info", correct: false, draggable: true },
       { text: "hist", correct: false, draggable: true },
@@ -101,7 +101,7 @@ const questions = [
   },
   {
     question: "Rin want to see this output. What the function is used: ",
-    image: "./assets/game7.png",
+    image: "/assets/game7.png",
     answers: [
       { text: "info", correct: false, draggable: true },
       { text: "hist", correct: false, draggable: true },
@@ -117,7 +117,7 @@ const questions = [
   },
   {
     question: "Rin want to see this output. What the function is used: ",
-    image: "./assets/game8.png",
+    image: "/assets/game8.png",
     answers: [
       { text: "info", correct: false, draggable: true },
       { text: "hist", correct: false, draggable: true },
@@ -133,7 +133,7 @@ const questions = [
   },
   {
     question: "Rin want to see this output. What the function is used: ",
-    image: "./assets/game9.png",
+    image: "/assets/game9.png",
     answers: [
       { text: "info", correct: false, draggable: true },
       { text: "hist", correct: true, draggable: true },
@@ -149,7 +149,7 @@ const questions = [
   },
   {
     question: "Rin want to see this output. What the function is used: ",
-    image: "./assets/game10.png",
+    image: "/assets/game10.png",
     answers: [
       { text: "info", correct: false, draggable: true },
       { text: "hist", correct: false, draggable: true },
