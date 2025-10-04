@@ -1,5 +1,3 @@
-import "../globals.css";
-
 export default function RegisterPage() {
   return (
     <div className="bg-gradient-to-r from-green-400 to-teal-800 min-h-screen flex flex-col">
