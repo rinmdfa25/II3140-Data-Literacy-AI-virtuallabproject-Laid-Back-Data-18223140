@@ -28,7 +28,7 @@ export default function LandingPage() {
   }, [landingpageImages.length]);
 
   return (
-    <div className="bg-gradient-to-r from-green-400 to-teal-800 min-h-screen">
+    <div className="bg-gradient-to-r from-green-400 to-teal-800 ">
       {/* Hero Section */}
       <section className="hero">
         <div className="from-green-400 to-teal-800 bg-gradient-to-r min-h-screen flex flex-col md:flex-row items-center justify-center md:gap-6">
@@ -48,7 +48,7 @@ export default function LandingPage() {
 
       {/* About Section */}
       <section className="content from-green-400 to-teal-800 bg-gradient-to-r min-h-screen flex items-center justify-center p-6" id="about">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center text-center justify-end md:gap-6 w-full">
+        <div className=" mx-auto flex flex-col md:flex-row items-center text-center justify-end md:gap-6 w-full">
           <div className="w-full md:w-1/2 text-center md:text-center mb-4 md:mb-0">
             <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white leading-tight">Explore the Introduction of Data Science and the World of AI!</h2>
             <p className="text-lg md:text-xl text-white mt-4">Dive in into the data world without anxiety! Cause you're here to learn the basic of data while being chill and having fun!</p>
