@@ -7,7 +7,7 @@ export default function RegisterPage() {
         {/* Left Side - Image */}
         <div className="w-full md:w-[70%] flex items-center justify-center bg-transparent">
           <div className="w-full h-full">
-            <img src="./assets/campingground2.jpg" alt="Camping Ground" className="object-cover w-full h-full" style={{ minHeight: "100%" }} />
+            <img src="/assets/campingground2.jpg" alt="Camping Ground" className="object-cover w-full h-full" style={{ minHeight: "100%" }} />
           </div>
         </div>
         {/* Right Side - Login Form */}
