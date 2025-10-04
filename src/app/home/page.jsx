@@ -5,7 +5,7 @@ export default function HomePage() {
       <section className="introduction" id="introduction">
         <div className="from-green-400 to-teal-800 bg-gradient-to-r min-h-screen flex flex-col md:flex-row items-center justify-center md:gap-6">
           <div className="w-full md:w-1/2 flex justify-center md:justify-self-center md:pr-4 mb-6 md:mb-0">
-            <img src="./assets/rin.png" className="w-48 md:w-80" alt="Character Image" />
+            <img src="/assets/rin.png" className="w-48 md:w-80" alt="Character Image" />
           </div>
           <div className="w-full md:w-1/2 text-center justify-self-auto md:text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white text-center md:text-start">Meet Our Character...</h1>

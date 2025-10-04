@@ -16,7 +16,7 @@ export default function Layout({ children }) {
                 </a>
               </div>
               <div className="md:flex items-center space-x-6">
-                <img src="./assets/laidbackdatalogo.png" alt="Laid-Back Data Logo" className="h-9" />
+                <img src="/assets/laidbackdatalogo.png" alt="Laid-Back Data Logo" className="h-9" />
               </div>
             </nav>
           </header>

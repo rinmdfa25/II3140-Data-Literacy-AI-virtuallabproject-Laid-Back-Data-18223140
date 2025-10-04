@@ -65,13 +65,13 @@ export default function LandingPage() {
         <h1 className="text-lg md:text-xl font-bold mb-4 text-white text-center">Get in Touch with Me</h1>
         <div className="flex justify-self-center self-center gap-4 mb-1 space-x-4" id="contact">
           <a href="https://github.com/rinmdfa25" target="_blank" className="text-white hover:opacity-80 transition-opacity">
-            <img src="./assets/github.png" alt="Github Logo" className="w-12 h-12" />
+            <img src="/assets/github.png" alt="Github Logo" className="w-12 h-12" />
           </a>
           <a href="https://x.com/rinchann25" target="_blank" className="text-white hover:opacity-80 transition-opacity">
-            <img src="./assets/twitter.png" alt="Twitter Logo" className="w-12 h-12" />
+            <img src="/assets/twitter.png" alt="Twitter Logo" className="w-12 h-12" />
           </a>
           <a href="https://www.youtube.com/@dablast9021" target="_blank" className="text-white hover:opacity-80 transition-opacity">
-            <img src="./assets/youtube.png" alt="YouTube Logo" className="w-12 h-12" />
+            <img src="/assets/youtube.png" alt="YouTube Logo" className="w-12 h-12" />
           </a>
         </div>
       </footer>
