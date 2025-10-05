@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { createClient } from "@/lib/supabase/client";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -9,14 +10,22 @@ export default function LoginPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
+  const supabase = createClient();
 
-  const handleSubmit = (event) => {
+  const handleLogin = async (event) => {
     event.preventDefault();
-    if (username === "datalaidback" && password === "laiddataback") {
-      alert("Login successful!");
-      router.push("/home");
+
+    const { error } = await supabase.auth.signInWithPassword({
+      email: username,
+      password: password,
+    });
+
+    if (error) {
+      alert("Error: Invalid login credentials.");
+      console.error(error);
     } else {
-      alert("Invalid username or password. Please try again.");
+      router.push("/home");
+      router.refresh();
     }
   };
 
@@ -35,7 +44,7 @@ export default function LoginPage() {
             <h2 className="text-4xl font-bold mb-4 text-white text-center">Login</h2>
             <p className="text-lg text-white mb-6 text-center">Welcome back! Please enter your credentials.</p>
 
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleLogin}>
               <div className="mb-4">
                 <label htmlFor="username" className="block text-white font-semibold mb-2">
                   Username

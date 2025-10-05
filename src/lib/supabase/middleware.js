@@ -1,0 +1,67 @@
+import { environment } from "../../../configs/environment";
+import { createServerClient } from "@supabase/ssr";
+import { NextResponse } from "next/server";
+
+/**
+ * This function updates the user's session and handles redirects.
+ * @param {import('next/server').NextRequest} request
+ */
+export async function updateSession(request) {
+  // This is a more streamlined way to handle cookies with Supabase
+  let response = NextResponse.next({
+    request: {
+      headers: request.headers,
+    },
+  });
+
+  const { SUPABASE_URL, SUPABASE_ANON_KEY } = environment;
+
+  const supabase = createServerClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+    cookies: {
+      get(name) {
+        return request.cookies.get(name)?.value;
+      },
+      set(name, value, options) {
+        request.cookies.set({ name, value, ...options });
+        response = NextResponse.next({
+          request: {
+            headers: request.headers,
+          },
+        });
+        response.cookies.set({ name, value, ...options });
+      },
+      remove(name, options) {
+        request.cookies.set({ name, value: "", ...options });
+        response = NextResponse.next({
+          request: {
+            headers: request.headers,
+          },
+        });
+        response.cookies.set({ name, value: "", ...options });
+      },
+    },
+  });
+
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  const publicPaths = ["/", "/login", "/register"];
+  const pathname = request.nextUrl.pathname;
+
+  if (!user && !publicPaths.includes(pathname)) {
+    // ...redirect them to the login page.
+    const url = request.nextUrl.clone();
+    url.pathname = "/login";
+    return NextResponse.redirect(url);
+  }
+
+  if (user && (pathname === "/login" || pathname === "/register")) {
+    // ...redirect them to the homepage.
+    const url = request.nextUrl.clone();
+    url.pathname = "/home"; // or wherever your main dashboard is
+    return NextResponse.redirect(url);
+  }
+
+  return response;
+}
