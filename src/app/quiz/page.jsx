@@ -153,6 +153,26 @@ const questions = [
   },
 ];
 
+async function saveScore(finalScore, gameType) {
+  try {
+    const response = await fetch("/api/scores", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        score: finalScore,
+        game_type: gameType,
+      }),
+    });
+    if (response.ok) {
+      console.log(`${gameType} score of ${finalScore} saved!`);
+    } else {
+      console.error("Failed to save score.");
+    }
+  } catch (error) {
+    console.error("Error saving score:", error);
+  }
+}
+
 export default function QuizPage() {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
@@ -173,6 +193,7 @@ export default function QuizPage() {
     if (currentQuestionIndex + 1 < questions.length) {
       setCurrentQuestionIndex((i) => i + 1);
     } else {
+      saveScore(score, "quiz");
       setShowScore(true);
     }
   }

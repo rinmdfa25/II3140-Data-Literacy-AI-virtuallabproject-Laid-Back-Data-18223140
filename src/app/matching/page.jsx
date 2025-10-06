@@ -165,6 +165,26 @@ const questions = [
   },
 ];
 
+async function saveScore(finalScore, gameType) {
+  try {
+    const response = await fetch("/api/scores", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        score: finalScore,
+        game_type: gameType,
+      }),
+    });
+    if (response.ok) {
+      console.log(`${gameType} score of ${finalScore} saved!`);
+    } else {
+      console.error("Failed to save score.");
+    }
+  } catch (error) {
+    console.error("Error saving score:", error);
+  }
+}
+
 function splitAnswers(answers) {
   return [answers.slice(0, 5), answers.slice(5)];
 }
@@ -218,6 +238,7 @@ export default function HomePage() {
       setShowRightAnswer("");
     } else {
       alert(`Quiz completed! Your score: (${Math.round((score / questions.length) * 100)}%)`);
+      saveScore(score, "drag-and-drop");
       document.location.href = "/end";
     }
   }
