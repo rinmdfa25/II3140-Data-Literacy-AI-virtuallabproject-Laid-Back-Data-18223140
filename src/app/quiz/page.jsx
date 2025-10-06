@@ -153,13 +153,14 @@ const questions = [
   },
 ];
 
-async function saveScore(finalScore, gameType) {
+async function saveScore(finalScore, totalQuestions, gameType) {
+  const grade = Math.round((finalScore / totalQuestions) * 100);
   try {
     const response = await fetch("/api/scores", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        score: finalScore,
+        score: grade,
         game_type: gameType,
       }),
     });
@@ -193,7 +194,7 @@ export default function QuizPage() {
     if (currentQuestionIndex + 1 < questions.length) {
       setCurrentQuestionIndex((i) => i + 1);
     } else {
-      saveScore(score, "quiz");
+      saveScore(score, questions.length, "quiz");
       setShowScore(true);
     }
   }
@@ -208,79 +209,76 @@ export default function QuizPage() {
   const grade = Math.round((score / questions.length) * 100);
 
   return (
-    <div className="bg-gradient-to-r from-green-400 to-teal-800 min-h-screen flex flex-col">
-      {/* Main Quiz Section */}
-      <main className="flex items-center justify-center flex-1 pt-20 px-4">
-        <div className="bg-gradient-to-r from-blue-500 to-cyan-600 text-black shadow-2xl rounded-lg p-6 max-w-md w-full mb-6">
-          {!showScore ? (
-            <div className="bg-white text-gray-900 p-4 rounded-lg shadow-md">
-              <div className="text-lg font-semibold mb-4">
-                {currentQuestionIndex + 1}. {currentQuestion.question}
-              </div>
-              <div className="space-y-2 mb-4">
-                {currentQuestion.answers.map((answer, idx) => (
-                  <button
-                    key={idx}
-                    className={`w-full p-4 rounded-lg text-left transition-colors ${
-                      selected === idx
-                        ? answer.correct
-                          ? "bg-green-500 ring-4 ring-blue-500 text-white"
-                          : "bg-red-500 ring-4 ring-blue-500 text-white"
-                        : selected !== null && answer.correct
-                        ? "bg-green-400 ring-4 ring-blue-500 text-white"
-                        : "bg-slate-600 text-white hover:bg-slate-500"
-                    }`}
-                    disabled={selected !== null}
-                    onClick={() => handleAnswer(idx)}
-                  >
-                    {answer.text}
-                  </button>
-                ))}
-              </div>
-              {selected !== null && (
-                <button className="w-full bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white py-2 rounded-lg" onClick={handleNext}>
-                  {currentQuestionIndex + 1 === questions.length ? "Finish" : "Next"}
-                </button>
-              )}
+    <main className="flex items-center justify-center flex-1 pt-20 px-4">
+      <div className="bg-gradient-to-r from-blue-500 to-cyan-600 text-black shadow-2xl rounded-lg p-6 max-w-md w-full mb-6">
+        {!showScore ? (
+          <div className="bg-white text-gray-900 p-4 rounded-lg shadow-md">
+            <div className="text-lg font-semibold mb-4">
+              {currentQuestionIndex + 1}. {currentQuestion.question}
             </div>
-          ) : (
-            <>
-              <div className="bg-white text-gray-900 p-4 rounded-lg shadow-md">
-                <div className="text-center">
-                  <h2 className="text-2xl font-bold mb-4">Quiz Completed!</h2>
-                  <p className="text-lg mb-4">
-                    Your Score: <span>{score}</span>/<span>{questions.length}</span>
-                  </p>
-                  <p className="text-lg mb-4">
-                    Grade: <span>{grade}</span>
-                  </p>
-                  {grade >= 60 ? (
-                    <div>
-                      <p className="text-sm text-gray-700">Congrats, you made it through the first game! Press the button below to continue your journey.</p>
-                      <a href="/game2">
-                        <button className="mt-6 w-full bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white py-2 rounded-lg">Continue</button>
-                      </a>
-                    </div>
-                  ) : (
-                    <div>
-                      <p className="text-sm text-red-700 mb-2">You need at least 60 to pass. Please review the material and try again.</p>
-                      <a href="/learn">
-                        <button className="mt-2 w-full bg-gradient-to-r from-green-400 to-teal-500 hover:from-green-500 hover:to-teal-600 text-white py-2 rounded-lg">Learn again!</button>
-                      </a>
-                      <button className="mt-2 w-full bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white py-2 rounded-lg" onClick={handleRestart}>
-                        Retake Quiz
-                      </button>
-                    </div>
-                  )}
-                </div>
+            <div className="space-y-2 mb-4">
+              {currentQuestion.answers.map((answer, idx) => (
+                <button
+                  key={idx}
+                  className={`w-full p-4 rounded-lg text-left transition-colors ${
+                    selected === idx
+                      ? answer.correct
+                        ? "bg-green-500 ring-4 ring-blue-500 text-white"
+                        : "bg-red-500 ring-4 ring-blue-500 text-white"
+                      : selected !== null && answer.correct
+                      ? "bg-green-400 ring-4 ring-blue-500 text-white"
+                      : "bg-slate-600 text-white hover:bg-slate-500"
+                  }`}
+                  disabled={selected !== null}
+                  onClick={() => handleAnswer(idx)}
+                >
+                  {answer.text}
+                </button>
+              ))}
+            </div>
+            {selected !== null && (
+              <button className="w-full bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white py-2 rounded-lg" onClick={handleNext}>
+                {currentQuestionIndex + 1 === questions.length ? "Finish" : "Next"}
+              </button>
+            )}
+          </div>
+        ) : (
+          <>
+            <div className="bg-white text-gray-900 p-4 rounded-lg shadow-md">
+              <div className="text-center">
+                <h2 className="text-2xl font-bold mb-4">Quiz Completed!</h2>
+                <p className="text-lg mb-4">
+                  Your Score: <span>{score}</span>/<span>{questions.length}</span>
+                </p>
+                <p className="text-lg mb-4">
+                  Grade: <span>{grade}</span>
+                </p>
+                {grade >= 60 ? (
+                  <div>
+                    <p className="text-sm text-gray-700">Congrats, you made it through the first game! Press the button below to continue your journey.</p>
+                    <a href="/game2">
+                      <button className="mt-6 w-full bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white py-2 rounded-lg">Continue</button>
+                    </a>
+                  </div>
+                ) : (
+                  <div>
+                    <p className="text-sm text-red-700 mb-2">You need at least 60 to pass. Please review the material and try again.</p>
+                    <a href="/learn">
+                      <button className="mt-2 w-full bg-gradient-to-r from-green-400 to-teal-500 hover:from-green-500 hover:to-teal-600 text-white py-2 rounded-lg">Learn again!</button>
+                    </a>
+                    <button className="mt-2 w-full bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white py-2 rounded-lg" onClick={handleRestart}>
+                      Retake Quiz
+                    </button>
+                  </div>
+                )}
               </div>
-            </>
-          )}
-          <button className="mt-6 w-full bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white py-2 rounded-lg" onClick={handleRestart}>
-            Restart
-          </button>
-        </div>
-      </main>
-    </div>
+            </div>
+          </>
+        )}
+        <button className="mt-6 w-full bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white py-2 rounded-lg" onClick={handleRestart}>
+          Restart
+        </button>
+      </div>
+    </main>
   );
 }

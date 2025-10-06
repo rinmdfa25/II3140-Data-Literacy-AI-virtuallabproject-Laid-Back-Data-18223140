@@ -165,13 +165,14 @@ const questions = [
   },
 ];
 
-async function saveScore(finalScore, gameType) {
+async function saveScore(finalScore, totalQuestions, gameType) {
+  const grade = Math.round((finalScore / totalQuestions) * 100);
   try {
     const response = await fetch("/api/scores", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        score: finalScore,
+        score: grade,
         game_type: gameType,
       }),
     });
@@ -238,7 +239,7 @@ export default function HomePage() {
       setShowRightAnswer("");
     } else {
       alert(`Quiz completed! Your score: (${Math.round((score / questions.length) * 100)}%)`);
-      saveScore(score, "drag-and-drop");
+      saveScore(score, questions.length, "drag-and-drop");
       document.location.href = "/end";
     }
   }
@@ -256,91 +257,83 @@ export default function HomePage() {
   const [left, right] = splitAnswers(currentQuestion.answers);
 
   return (
-    <div className="bg-gradient-to-r from-green-400 to-teal-800 min-h-screen" key={restartKey}>
-      {/* Game Section*/}
-      <section>
-        <div className="flex items-center justify-center min-h-screen pt-20 px-4 gap-4">
-          <div className="flex flex-row space-x-8 w-full max-w-4xl justify-center">
-            <div className="bg-gradient-to-r from-blue-400 to-blue-700 text-black shadow-2xl rounded-lg p-6 max-w-md w-full mb-6 flex items-center justify-center">
-              <div className="bg-white text-gray-900 p-4 rounded-lg shadow-md flex flex-col items-center justify-center w-full h-full border-2 border-transparent transition-all">
-                <div className="text-lg font-semibold mb-4">{currentQuestion.question}</div>
-                <div className="justify-center place-items-center mb-4">
-                  <img src={currentQuestion.image} alt="Question" className="max-w-xs rounded-lg shadow-md" />
-                </div>
-                <div
-                  ref={dropZoneRef}
-                  className={`bg-white border-2 border-dashed border-black rounded-lg min-h-[64px] min-w-[128px] flex items-center justify-center mb-4 ${
-                    dropped !== null ? (currentQuestion.answers[dropped].correct ? "border-green-500" : "border-red-500") : ""
-                  }`}
-                  onDrop={handleDrop}
-                  onDragOver={handleDragOver}
-                >
-                  {dropped !== null ? (
-                    <div className="bg-pink-200 text-pink-800 font-semibold p-3 px-5 rounded-full cursor-grab transition-all gap-2 flex items-center border-2 border-dashed border-gray-400" draggable={false}>
-                      {currentQuestion.answers[dropped].text}
-                    </div>
-                  ) : (
-                    <span className="text-gray-400 select-none">Drop your answer here</span>
-                  )}
-                </div>
-                <div className={` text-xl font-bold h-8 mb-4 ${feedback.includes("Yeay") ? "text-green-500" : feedback ? "text-red-500" : ""}`}>{feedback}</div>
-                <div className="text-lg font-semibold mb-4 text-green-700">{showRightAnswer}</div>
-                <button className={`bg-teal-500 text-white px-4 py-2 rounded-lg mt-2 hover:bg-teal-700 transition-colors ${showNext ? "" : "hidden"}`} onClick={handleNext}>
-                  Next
-                </button>
-                <button className="mt-4 w-full bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white py-2 rounded-lg" onClick={handleRestart}>
-                  Restart
-                </button>
-              </div>
+    <div className="flex items-center justify-center min-h-screen min-w-full pt-20 px-4">
+      <div className="flex flex-row space-x-8 w-full max-w-6xl justify-center items-center">
+        <div className="bg-gradient-to-r from-blue-400 to-blue-700 text-black shadow-2xl rounded-lg p-6 max-w-md w-full mb-6 flex items-center justify-center">
+          <div className="bg-white text-gray-900 p-4 rounded-lg shadow-md flex flex-col items-center justify-center w-full h-full border-2 border-transparent transition-all">
+            <div className="text-lg font-semibold mb-4">{currentQuestion.question}</div>
+            <div className="justify-center place-items-center mb-4">
+              <img src={currentQuestion.image} alt="Question" className="max-w-xs rounded-lg shadow-md" />
             </div>
+            <div
+              ref={dropZoneRef}
+              className={`bg-white border-2 border-dashed border-black rounded-lg min-h-[64px] min-w-[128px] flex items-center justify-center mb-4 ${
+                dropped !== null ? (currentQuestion.answers[dropped].correct ? "border-green-500" : "border-red-500") : ""
+              }`}
+              onDrop={handleDrop}
+              onDragOver={handleDragOver}
+            >
+              {dropped !== null ? (
+                <div className="bg-pink-200 text-pink-800 font-semibold p-3 px-5 rounded-full cursor-grab transition-all gap-2 flex items-center border-2 border-dashed border-gray-400" draggable={false}>
+                  {currentQuestion.answers[dropped].text}
+                </div>
+              ) : (
+                <span className="text-gray-400 select-none">Drop your answer here</span>
+              )}
+            </div>
+            <div className={` text-xl font-bold h-8 mb-4 ${feedback.includes("Yeay") ? "text-green-500" : feedback ? "text-red-500" : ""}`}>{feedback}</div>
+            <div className="text-lg font-semibold mb-4 text-green-700">{showRightAnswer}</div>
+            <button className={`bg-teal-500 text-white px-4 py-2 rounded-lg mt-2 hover:bg-teal-700 transition-colors ${showNext ? "" : "hidden"}`} onClick={handleNext}>
+              Next
+            </button>
+            <button className="mt-4 w-full bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white py-2 rounded-lg" onClick={handleRestart}>
+              Restart
+            </button>
           </div>
-          <div className="flex flex-row space-x-8 w-full max-w-4xl justify-center">
-            <div className="bg-gradient-to-r from-pink-300 to-pink-500 text-black shadow-2xl rounded-lg p-6 max-w-md w-full mb-6 flex items-center justify-center">
-              <div className="bg-white text-gray-900 p-4 rounded-lg shadow-md flex flex-col items-center justify-center w-full h-full">
-                <div className="flex flex-wrap gap-4 w-full">
-                  <div className="flex flex-row w-full">
-                    <div className="flex flex-col gap-2 w-1/2 pr-2">
-                      {left.map((answer, idx) => {
-                        const answerIdx = idx;
-                        return (
-                          <div key={answer.text} className="answer-wrapper mb-2 flex justify-center" style={{ width: "100%" }}>
-                            <div
-                              className="bg-pink-200 text-pink-800 font-semibold p-3 px-5 rounded-full cursor-grab transition-all gap-2 flex items-center border-2 border-dashed border-gray-400"
-                              draggable={dropped === null}
-                              onDragStart={(e) => handleDragStart(e, answerIdx)}
-                              style={{ marginBottom: "0.5rem", opacity: dropped === answerIdx ? 0.5 : 1 }}
-                            >
-                              {answer.text}
-                            </div>
-                          </div>
-                        );
-                      })}
-                    </div>
-                    <div className="flex flex-col gap-2 w-1/2 pl-2" style={{ marginLeft: "2rem" }}>
-                      {right.map((answer, idx) => {
-                        const answerIdx = idx + 5;
-                        return (
-                          <div key={answer.text} className="answer-wrapper mb-2 flex justify-center" style={{ width: "100%" }}>
-                            <div
-                              className="bg-pink-200 text-pink-800 font-semibold p-3 px-5 rounded-full cursor-grab transition-all gap-2 flex items-center border-2 border-dashed border-gray-400"
-                              draggable={dropped === null}
-                              onDragStart={(e) => handleDragStart(e, answerIdx)}
-                              style={{ marginBottom: "0.5rem", opacity: dropped === answerIdx ? 0.5 : 1 }}
-                            >
-                              {answer.text}
-                            </div>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  </div>
+        </div>
+        <div className="bg-gradient-to-r from-pink-300 to-pink-500 text-black shadow-2xl rounded-lg p-6 max-w-md w-full mb-6 flex items-center justify-center">
+          <div className="bg-white text-gray-900 p-4 rounded-lg shadow-md flex flex-col items-center justify-center w-full h-full">
+            <div className="flex flex-wrap w-full justify-center">
+              <div className="flex flex-row w-full justify-center">
+                <div className="flex flex-col gap-2 w-1/2 pr-2">
+                  {left.map((answer, idx) => {
+                    const answerIdx = idx;
+                    return (
+                      <div key={answer.text} className="answer-wrapper mb-2 flex justify-center" style={{ width: "100%" }}>
+                        <div
+                          className="bg-pink-200 text-pink-800 font-semibold p-3 px-5 rounded-full cursor-grab transition-all gap-2 flex items-center border-2 border-dashed border-gray-400"
+                          draggable={dropped === null}
+                          onDragStart={(e) => handleDragStart(e, answerIdx)}
+                          style={{ marginBottom: "0.5rem", opacity: dropped === answerIdx ? 0.5 : 1 }}
+                        >
+                          {answer.text}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+                <div className="flex flex-col gap-2 w-1/2 pl-2" style={{ marginLeft: "2rem" }}>
+                  {right.map((answer, idx) => {
+                    const answerIdx = idx + 5;
+                    return (
+                      <div key={answer.text} className="answer-wrapper mb-2 flex justify-center" style={{ width: "100%" }}>
+                        <div
+                          className="bg-pink-200 text-pink-800 font-semibold p-3 px-5 rounded-full cursor-grab transition-all gap-2 flex items-center border-2 border-dashed border-gray-400"
+                          draggable={dropped === null}
+                          onDragStart={(e) => handleDragStart(e, answerIdx)}
+                          style={{ marginBottom: "0.5rem", opacity: dropped === answerIdx ? 0.5 : 1 }}
+                        >
+                          {answer.text}
+                        </div>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </section>
-      {/* End of Game Section */}
+      </div>
     </div>
   );
 }
