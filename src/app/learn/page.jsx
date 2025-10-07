@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 
 export default function LearnPage() {
   const learnImages = [
@@ -15,6 +15,27 @@ export default function LearnPage() {
     { src: "/assets/pandas.png", alt: "Pandas" },
     { src: "/assets/matplotlib.svg", alt: "Matplotlib" },
     { src: "/assets/seaborn.svg", alt: "Seaborn" },
+  ];
+
+  const videos = [
+    { id: "data-intro", src: "https://www.youtube.com/embed/yhO_t-c3yJY", title: "What is Data? | Data Literacy Basics", label: "What is Data?" },
+    { id: "data-collect", src: "https://www.youtube.com/embed/zGFuj9tF33Q?list=PLID58IQe16nE-1980HOGDWsvf0skE2jvS&index=5", title: "Collect and Understand Data | Data Literacy Basics", label: "Collect and Understand Data" },
+    { id: "data-visual", src: "https://www.youtube.com/embed/YDT5ZPcMZWM?list=PLID58IQe16nE-1980HOGDWsvf0skE2jvS&index=4", title: "Visualization Data | Data Literacy Basics", label: "Visualization Data" },
+    { id: "data-misconcept", src: "https://www.youtube.com/embed/nd_oOOXeN3A?list=PLID58IQe16nE-1980HOGDWsvf0skE2jvS&index=3", title: "Data Misconceptions | Data Literacy Basics", label: "Data Misconceptions" },
+    { id: "data-mistakes", src: "https://www.youtube.com/embed/HQ4dboRW7tM?list=PLID58IQe16nE-1980HOGDWsvf0skE2jvS&index=14", title: "Data Mistakes | Data Literacy Basics", label: "Data Mistakes" },
+    { id: "data-context", src: "https://www.youtube.com/embed/oYcG5OxkMZU?list=PLID58IQe16nE-1980HOGDWsvf0skE2jvS&index=15", title: "Data Content | Data Literacy Basics", label: "Data Context" },
+    { id: "pandas", src: "https://www.youtube.com/embed/4c_mwnYdbhQ", title: "Introduction to Pandas | Data Literacy Basics", label: "Pandas" },
+    { id: "numpy", src: "https://www.youtube.com/embed/EhYC02PD_gc", title: "Introduction to NumPy | Data Literacy Basics", label: "NumPy" },
+    { id: "matplotlib", src: "https://www.youtube.com/embed/OZOOLe2imFo", title: "Introduction to Matplotlib | Data Literacy Basics", label: "Matplotlib" },
+    { id: "seaborn", src: "https://www.youtube.com/embed/ooqXQ37XHMM", title: "Introduction to Seaborn | Data Literacy Basics", label: "Seaborn" },
+    { id: "ai-intro", src: "https://www.youtube.com/embed/a0_lo_GDcFw?list=PL8dPuuaLjXtO65LeD2p4_Sb5XQ51par_b&index=2", title: "What is A.I? | Data Literacy Basics", label: "What is A.I?" },
+    { id: "ai-agents", src: "https://www.youtube.com/embed/fXizBc03D7E", title: "What is A.I. Agents | Data Literacy Basics", label: "What is A.I. Agents" },
+    { id: "ai-bfs-dfs", src: "https://www.youtube.com/embed/cS-198wtfj0", title: "BFS and DFS Algorithm | Data Literacy Basics", label: "BFS & DFS Algorithms" },
+    { id: "ai-kbs", src: "https://www.youtube.com/embed/_Fn5HYfK858", title: "Knowledge-Based Systems Approach | Data Literacy Basics", label: "Knowledge-Based Systems" },
+    { id: "ai-rbs", src: "https://www.youtube.com/embed/ZjG5wwV_2U4", title: "Rule-Based Systems Approach | Data Literacy Basics", label: "Rule-Based Systems" },
+    { id: "ai-supervised", src: "https://www.youtube.com/embed/4qVRBYAdLAo?list=PL8dPuuaLjXtO65LeD2p4_Sb5XQ51par_b&index=3", title: "Supervised Learning | Data Literacy Basics", label: "Supervised Learning" },
+    { id: "ai-unsupervised", src: "https://www.youtube.com/embed/JnnaDNNb380?list=PL8dPuuaLjXtO65LeD2p4_Sb5XQ51par_b&index=7", title: "Unsupervised Learning | Data Literacy Basics", label: "Unsupervised Learning" },
+    { id: "ai-reinforcement", src: "https://www.youtube.com/embed/nIgIv4IfJ6s?list=PL8dPuuaLjXtO65LeD2p4_Sb5XQ51par_b&index=10", title: "Reinforcement Learning | Data Literacy Basics", label: "Reinforcement Learning" },
   ];
 
   const [current, setCurrent] = React.useState(0);
@@ -34,6 +55,41 @@ export default function LearnPage() {
     return () => clearInterval(interval);
   }, [learnImages.length]);
 
+  const [completedVideos, setCompletedVideos] = React.useState(new Set());
+
+  useEffect(() => {
+    const fetchProgress = async () => {
+      try {
+        const response = await fetch("/api/progress");
+        if (response.ok) {
+          const data = await response.json();
+          setCompletedVideos(new Set(data.completedVideos));
+        }
+      } catch (error) {
+        console.error("Failed to fetch progress:", error);
+      }
+    };
+    fetchProgress();
+  }, []);
+
+  const handleMarkAsWatched = async (videoId) => {
+    if (completedVideos.has(videoId)) return;
+
+    const newCompletedVideos = new Set(completedVideos);
+    newCompletedVideos.add(videoId);
+    setCompletedVideos(newCompletedVideos);
+
+    try {
+      await fetch("/api/progress", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ video_id: videoId }),
+      });
+    } catch (error) {
+      console.error("Failed to save progress:", error);
+    }
+  };
+
   return (
     <div className="bg-gradient-to-r from-green-400 to-teal-800 min-h-screen">
       {/* Introduction Section */}
@@ -50,65 +106,25 @@ export default function LearnPage() {
           </div>
         </div>
       </section>
+
+      {/* Progress Bar Section */}
+      <section className="p-8">
+        <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white text-center">Learning Section</h1>
+        <h2 className="text-2xl md:text-3xl font-bold mb-8 text-white text-center">Your Learning Progress...</h2>
+        <div className="max-w-4xl mx-auto">
+          <ProgressBar completed={completedVideos.size} total={videos.length} />
+        </div>
+      </section>
+
       {/* Data Literacy Introduction */}
-      <section className="dataliteracy" id="dataliteracy">
-        <h1 className="text-4xl md:text-5xl font-bold mb-8 text-white text-center">Data Literacy Basics</h1>
-        <div className="flex flex-col md:flex-row items-center justify-center md:gap-2 mx-auto max-w-5xl">
-          {/* Video Box 1 */}
-          <VideoBox src="https://www.youtube.com/embed/yhO_t-c3yJY" title="What is Data? | Data Literacy Basics" label="What is Data?" />
-          {/* Video Box 2 */}
-          <VideoBox src="https://www.youtube.com/embed/zGFuj9tF33Q?list=PLID58IQe16nE-1980HOGDWsvf0skE2jvS&index=5" title="Collect and Understand Data | Data Literacy Basics" label="Collect and Understand Data" />
-          {/* Video Box 3 */}
-          <VideoBox src="https://www.youtube.com/embed/YDT5ZPcMZWM?list=PLID58IQe16nE-1980HOGDWsvf0skE2jvS&index=4" title="Visualization Data | Data Literacy Basics" label="Data Visualization" />
+      <section className="videos" id="videos" style={{ marginTop: "3rem" }}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mx-auto max-w-5xl">
+          {videos.map((video) => (
+            <VideoBox key={video.id} videoId={video.id} src={video.src} title={video.title} label={video.label} isCompleted={completedVideos.has(video.id)} onComplete={handleMarkAsWatched} />
+          ))}
         </div>
       </section>
-      <section className="dataliteracy" id="dataliteracy">
-        <div className="flex flex-col md:flex-row items-center justify-center md:gap-2 mx-auto max-w-5xl">
-          {/* Video Box 4 */}
-          <VideoBox src="https://www.youtube.com/embed/nd_oOOXeN3A?list=PLID58IQe16nE-1980HOGDWsvf0skE2jvS&index=3" title="Data Misconceptions | Data Literacy Basics" label="Data Misconceptions" />
-          {/* Video Box 5 */}
-          <VideoBox src="https://www.youtube.com/embed/HQ4dboRW7tM?list=PLID58IQe16nE-1980HOGDWsvf0skE2jvS&index=14" title="Data Mistakes | Data Literacy Basics" label="Data Mistakes" />
-          {/* Video Box 6 */}
-          <VideoBox src="https://www.youtube.com/embed/oYcG5OxkMZU?list=PLID58IQe16nE-1980HOGDWsvf0skE2jvS&index=15" title="Data Context | Data Literacy Basics" label="Data Context" />
-        </div>
-      </section>
-      {/* Tools */}
-      <section className="tools" id="tools" style={{ marginTop: "3rem" }}>
-        <h1 className="text-4xl md:text-5xl font-bold mb-8 text-white text-center">Data Literacy Tools</h1>
-        <div className="flex flex-col md:flex-row items-center justify-center md:gap-2 mx-auto max-w-5xl">
-          {/* Video Box 7 */}
-          <VideoBox src="https://www.youtube.com/embed/4c_mwnYdbhQ" title="Introduction to NumPy | Data Literacy Basics" label="Introduction to NumPy" />
-          {/* Video Box 8 */}
-          <VideoBox src="https://www.youtube.com/embed/EhYC02PD_gc" title="Introduction to Pandas | Data Literacy Basics" label="Introduction to Pandas" />
-          {/* Video Box 9 */}
-          <VideoBox src="https://www.youtube.com/embed/OZOOLe2imFo" title="Introduction to Matplotlib | Data Literacy Basics" label="Introduction to Matplotlib" />
-          {/* Video Box 10 */}
-          <VideoBox src="https://www.youtube.com/embed/ooqXQ37XHMM" title="Introduction to Seaborn | Data Literacy Basics" label="Introduction to Seaborn" />
-        </div>
-      </section>
-      {/* AI Section */}
-      <section className="ai" id="ai" style={{ marginTop: "3rem" }}>
-        <h1 className="text-4xl md:text-5xl font-bold mb-8 text-white text-center">Artificial Intelligence Basics</h1>
-        <div className="flex flex-col md:flex-row items-center justify-center md:gap-2 mx-auto max-w-5xl">
-          {/* Video Box 11 */}
-          <VideoBox src="https://www.youtube.com/embed/a0_lo_GDcFw?list=PL8dPuuaLjXtO65LeD2p4_Sb5XQ51par_b&index=2" title="What is A.I? | Data Literacy Basics" label="What is A.I?" />
-          {/* Video Box 12 */}
-          <VideoBox src="https://www.youtube.com/embed/fXizBc03D7E" title="A.I. Agents | Data Literacy Basics" label="A.I. Agents" />
-          {/* Video Box 13 */}
-          <VideoBox src="https://www.youtube.com/embed/cS-198wtfj0" title="BFS & DFS Algorithms | Data Literacy Basics" label="BFS & DFS Algorithms" />
-        </div>
-      </section>
-      <section className="ai" id="ai">
-        <div className="flex flex-col md:flex-row items-center justify-center md:gap-2 mx-auto max-w-5xl">
-          {/* Video Box 14 */}
-          <VideoBox src="https://www.youtube.com/embed/4qVRBYAdLAo?list=PL8dPuuaLjXtO65LeD2p4_Sb5XQ51par_b&index=3" title="Supervised Learning | Data Literacy Basics" label="Supervised Learning" />
-          {/* Video Box 15 */}
-          <VideoBox src="https://www.youtube.com/embed/JnnaDNNb380?list=PL8dPuuaLjXtO65LeD2p4_Sb5XQ51par_b&index=7" title="Unsupervised Learning | Data Literacy Basics" label="Unsupervised Learning" />
-          {/* Video Box 16 */}
-          <VideoBox src="https://www.youtube.com/embed/nIgIv4IfJ6s?list=PL8dPuuaLjXtO65LeD2p4_Sb5XQ51par_b&index=10" title="Reinforcement Learning | Data Literacy Basics" label="Reinforcement Learning" />
-        </div>
-      </section>
-      {/* Cheatsheets Section */}
+
       <section className="cheatsheets" id="cheatsheets" style={{ marginTop: "3rem" }}>
         <div className="from-green-400 to-teal-800 bg-gradient-to-r min-h-screen flex flex-col md:flex-row items-center justify-center md:gap-6">
           <div className="w-full md:w-1/2 flex flex-col items-center gap-4">
@@ -158,13 +174,36 @@ export default function LearnPage() {
   );
 }
 
-function VideoBox({ src, title, label }) {
+function VideoBox({ src, title, label, videoId, isCompleted, onComplete }) {
   return (
-    <div className="bg-gradient-to-r from-pink-300 to-pink-500 text-black shadow-2xl rounded-lg p-4 max-w-xs w-full flex-nowrap mb-6 mx-2">
+    <div className="bg-gradient-to-r from-pink-300 to-pink-500 text-black shadow-2xl rounded-lg p-4 max-w-xs w-full mb-6 mx-2">
       <div className="bg-white text-gray-900 p-3 rounded-lg shadow-md">
-        <iframe className="w-full rounded-lg mb-2" height="160" src={src} title={title} frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+        <iframe className="w-full rounded-lg mb-2" height="160" src={src} title={title} allowFullScreen></iframe>
         <h2 className="text-lg md:text-xl text-center font-bold text-black">{label}</h2>
+        <div className="flex justify-center items-center mt-4 h-8">
+          {isCompleted ? (
+            <span className="text-green-500 font-bold">✓ Watched</span>
+          ) : (
+            <button onClick={() => onComplete(videoId)} className="bg-blue-500 text-white px-3 py-1 rounded-lg text-sm hover:bg-blue-600">
+              Mark as Watched
+            </button>
+          )}
+        </div>
       </div>
+    </div>
+  );
+}
+
+function ProgressBar({ completed, total }) {
+  const percentage = total > 0 ? Math.round((completed / total) * 100) : 0;
+  return (
+    <div className="w-full bg-gray-700 rounded-full h-6 border-2 border-slate-400 relative">
+      <div className="bg-cyan-300 h-full rounded-full transition-all duration-500 flex items-center justify-center text-sm font-bold text-gray-700" style={{ width: `${percentage}%` }}>
+        {percentage > 10 && `${percentage}%`}
+      </div>
+      <span className="absolute inset-0 flex items-center justify-center text-sm font-bold text-gray-700 mix-blend-difference">
+        {completed} / {total} Videos Watched
+      </span>
     </div>
   );
 }

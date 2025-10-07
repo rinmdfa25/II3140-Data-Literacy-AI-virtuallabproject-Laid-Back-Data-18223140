@@ -40,17 +40,14 @@ export default function Dropdown() {
       {isOpen && (
         <div className="absolute right-0 mt-2 w-48 bg-blue-500 rounded-md shadow-lg z-50">
           <div className="py-1">
-            <Link href="/learn" className="block px-4 py-2 text-sm text-white hover:bg-gray-700">
+            <Link href="/learn" className="block px-4 py-2 text-sm font-bold text-white hover:bg-gray-700">
               Learn
             </Link>
-            <Link href="/game1" className="block px-4 py-2 text-sm text-white hover:bg-gray-700">
+            <Link href="/game1" className="block px-4 py-2 text-sm font-bold text-white hover:bg-gray-700">
               Games
             </Link>
-            <Link href="/profile" className="block px-4 py-2 text-sm text-white hover:bg-gray-700">
-              Profile
-            </Link>
             <div className="border-t border-gray-200"></div>
-            <button onClick={handleLogout} className="w-full text-left block px-4 py-2 text-sm text-red-600 hover:bg-gray-100">
+            <button onClick={handleLogout} className="w-full text-left block px-4 py-2 text-sm font-bold text-red-400 hover:bg-gray-100">
               Log Out
             </button>
           </div>
