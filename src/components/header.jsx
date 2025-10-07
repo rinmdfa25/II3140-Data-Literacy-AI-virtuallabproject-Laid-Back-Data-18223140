@@ -4,21 +4,13 @@ import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { createClient } from "@/lib/supabase/client";
+import DropdownMenu from "./dropdown";
 
 export default function Header() {
   const pathname = usePathname();
-  const router = useRouter();
-  const supabase = createClient();
-
   const isLandingPage = pathname === "/";
   const isHomePage = pathname === "/home";
   const isAuthPage = pathname === "/login" || pathname === "/register";
-
-  const handleLogout = async () => {
-    await supabase.auth.signOut();
-    router.push("/");
-    router.refresh();
-  };
 
   return (
     <header>
@@ -38,13 +30,7 @@ export default function Header() {
         </div>
 
         {/* Right Side: "Log Out" Button Logic */}
-        <div className="mr-4 md:mr-12 w-28 text-right">
-          {!isLandingPage && !isAuthPage && (
-            <button onClick={handleLogout} className="font-semibold hover:text-teal-200 transition-colors">
-              Log Out
-            </button>
-          )}
-        </div>
+        <div className="mr-4 md:mr-12 w-28 text-right">{!isLandingPage && !isAuthPage && <DropdownMenu />}</div>
       </nav>
     </header>
   );
