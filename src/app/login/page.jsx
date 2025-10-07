@@ -75,7 +75,6 @@ export default function LoginPage() {
           </div>
         </div>
       </section>
-      {/* Left Side - Full-Screen Background Image */}
     </div>
   );
 }

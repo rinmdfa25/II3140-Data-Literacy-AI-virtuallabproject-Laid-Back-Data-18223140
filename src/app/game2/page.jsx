@@ -1,4 +1,38 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import Image from "next/image";
+
+function ProgressBar({ score }) {
+  return (
+    <div className="w-full bg-gray-700 rounded-full h-4 mt-2 border-2 border-slate-400">
+      <div className="bg-pink-400 h-full rounded-full transition-all duration-500" style={{ width: `${score}%` }}></div>
+    </div>
+  );
+}
+
 export default function Game2Page() {
+  const [highestScore, setHighestScore] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchHighestScore() {
+      try {
+        const response = await fetch("/api/scores/highestscore?game_type=drag-and-drop");
+        if (response.ok) {
+          const data = await response.json();
+          setHighestScore(data.highestScore || 0);
+        }
+      } catch (error) {
+        console.error("Error fetching highest score:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+    fetchHighestScore();
+  }, []);
+
   return (
     <div className="bg-gradient-to-r from-green-400 to-teal-800 min-h-screen">
       {/* Game Section */}
@@ -17,6 +51,10 @@ export default function Game2Page() {
             <a href="/matching" className="bg-white text-teal-600 px-6 py-3 rounded-full font-semibold hover:bg-gray-200 transition-colors inline-block text-center">
               Start the Word Matching
             </a>
+            <div className="max-w-sm mx-auto bg-slate-800/50 p-4 rounded-lg mt-6 mb-6">
+              <h3 className="font-bold text-white">Your Highest Quiz Score: {isLoading ? "Loading..." : `${highestScore}%`}</h3>
+              <ProgressBar score={highestScore} />
+            </div>
           </div>
         </div>
       </section>
