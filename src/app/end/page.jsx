@@ -15,15 +15,17 @@ export default function EndPage() {
               Rin very thankful that you help her to learn about data literacy. Now, she's can analyze the Crunchyroll dataset that she had been waiting it for long. She hopes that you can continue to learn more about data literacy and help
               others to learn about data too. Rin wants you to learn more with the button below!
             </p>
-            <a href="https://www.kaggle.com/" className="bg-white text-teal-600 px-6 py-3 rounded-full font-semibold hover:bg-gray-200 transition-colors inline-block text-center">
-              Learn More in Kaggle!!!
-            </a>
-            <a href="https://www.datacamp.com/" className="bg-white text-teal-600 px-6 py-3 rounded-full font-semibold hover:bg-gray-200 transition-colors inline-block text-center mt-4">
-              Learn More in DataCamp!!!
-            </a>
-            <a href="/home" className="bg-white text-teal-600 px-6 py-3 rounded-full font-semibold hover:bg-gray-200 transition-colors inline-block text-center mt-4">
-              Back to Homepage
-            </a>
+            <div className="w-full md:w-1/2 flex flex-col items-center justify-self-center text-center md:text-center gap-4">
+              <a href="https://www.kaggle.com/" className="bg-white text-teal-600 px-6 py-3 rounded-full font-semibold hover:bg-gray-200 transition-colors inline-block text-center">
+                Learn More in Kaggle!!!
+              </a>
+              <a href="https://www.datacamp.com/" className="bg-white text-teal-600 px-6 py-3 rounded-full font-semibold hover:bg-gray-200 transition-colors inline-block text-center mt-4">
+                Learn More in DataCamp!!!
+              </a>
+              <a href="https://www.coursera.org/courses?query=free&skills=Data%20Science" className="bg-white text-teal-600 px-6 py-3 rounded-full font-semibold hover:bg-gray-200 transition-colors inline-block text-center mt-4">
+                Learn More in Coursera!!!
+              </a>
+            </div>
           </div>
         </div>
       </section>

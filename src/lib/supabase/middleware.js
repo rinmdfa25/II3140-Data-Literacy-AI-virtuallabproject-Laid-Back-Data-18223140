@@ -7,7 +7,6 @@ import { NextResponse } from "next/server";
  * @param {import('next/server').NextRequest} request
  */
 export async function updateSession(request) {
-  // This is a more streamlined way to handle cookies with Supabase
   let response = NextResponse.next({
     request: {
       headers: request.headers,
@@ -50,16 +49,14 @@ export async function updateSession(request) {
   const pathname = request.nextUrl.pathname;
 
   if (!user && !publicPaths.includes(pathname)) {
-    // ...redirect them to the login page.
     const url = request.nextUrl.clone();
     url.pathname = "/login";
     return NextResponse.redirect(url);
   }
 
   if (user && (pathname === "/login" || pathname === "/register")) {
-    // ...redirect them to the homepage.
     const url = request.nextUrl.clone();
-    url.pathname = "/home"; // or wherever your main dashboard is
+    url.pathname = "/home";
     return NextResponse.redirect(url);
   }
 

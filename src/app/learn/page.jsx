@@ -1,11 +1,10 @@
 "use client";
 
 import React, { useEffect } from "react";
+import Carousel from "@/components/carousel.jsx";
 
 export default function LearnPage() {
   const learnImages = [
-    { src: "/assets/data.png", alt: "Data" },
-    { src: "/assets/camp.png", alt: "Camp" },
     { src: "/assets/datamining.png", alt: "Data Mining" },
     { src: "/assets/machinelearning.png", alt: "Machine Learning" },
     { src: "/assets/visualizationdata.png", alt: "Data Visualization" },
@@ -37,23 +36,6 @@ export default function LearnPage() {
     { id: "ai-unsupervised", src: "https://www.youtube.com/embed/JnnaDNNb380?list=PL8dPuuaLjXtO65LeD2p4_Sb5XQ51par_b&index=7", title: "Unsupervised Learning | Data Literacy Basics", label: "Unsupervised Learning" },
     { id: "ai-reinforcement", src: "https://www.youtube.com/embed/nIgIv4IfJ6s?list=PL8dPuuaLjXtO65LeD2p4_Sb5XQ51par_b&index=10", title: "Reinforcement Learning | Data Literacy Basics", label: "Reinforcement Learning" },
   ];
-
-  const [current, setCurrent] = React.useState(0);
-  const [fade, setFade] = React.useState("fade-in");
-
-  React.useEffect(() => {
-    const interval = setInterval(() => {
-      setFade("fade-out");
-      setTimeout(() => {
-        setCurrent((prev) => (prev + 1) % learnImages.length);
-        setFade("fade-in");
-        setTimeout(() => {
-          setFade("");
-        }, 300);
-      }, 300);
-    }, 1000);
-    return () => clearInterval(interval);
-  }, [learnImages.length]);
 
   const [completedVideos, setCompletedVideos] = React.useState(new Set());
 
@@ -96,7 +78,7 @@ export default function LearnPage() {
       <section className="hero">
         <div className="from-green-400 to-teal-800 bg-gradient-to-r min-h-screen flex flex-col md:flex-row items-center justify-center md:gap-6">
           <div className="w-full flex md:w-1/2 flex-col items-center relative space-y-6 z-0">
-            <img src={learnImages[current].src} alt={learnImages[current].alt} className={`w-48 md:w-56 relative mb-4 ${fade}`} />
+            <Carousel images={learnImages} interval={1500} />
           </div>
           <div className="w-full md:w-1/2 text-center md:text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white text-center">It's Time To Learn!!!</h1>

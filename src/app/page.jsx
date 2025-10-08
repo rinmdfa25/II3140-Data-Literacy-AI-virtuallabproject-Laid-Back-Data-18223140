@@ -2,30 +2,20 @@
 
 import React, { useEffect } from "react";
 import "./globals.css";
+import Carousel from "@/components/carousel";
 
 export default function LandingPage() {
+  const startpageImages = [
+    { src: "/assets/datacamp.png", alt: "Data Camp" },
+    { src: "/assets/data.png", alt: "Data" },
+    { src: "/assets/camp.png", alt: "Camp" },
+  ];
+
   const landingpageImages = [
     { src: "/assets/python.png", alt: "Python" },
     { src: "/assets/statistics.png", alt: "Statistics Image" },
     { src: "/assets/ai.png", alt: "AI Image" },
   ];
-
-  const [current, setCurrent] = React.useState(0);
-  const [fade, setFade] = React.useState("fade-in");
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setFade("fade-out");
-      setTimeout(() => {
-        setCurrent((prev) => (prev + 1) % landingpageImages.length);
-        setFade("fade-in");
-        setTimeout(() => {
-          setFade("");
-        }, 300);
-      }, 300);
-    }, 1000);
-    return () => clearInterval(interval);
-  }, [landingpageImages.length]);
 
   return (
     <div className="bg-gradient-to-r from-green-400 to-teal-800 ">
@@ -33,7 +23,7 @@ export default function LandingPage() {
       <section className="hero">
         <div className="from-green-400 to-teal-800 bg-gradient-to-r min-h-screen flex flex-col md:flex-row items-center justify-center md:gap-6">
           <div className="w-full md:w-1/2 flex justify-center md:justify-self-center md:pr-4 mb-6 md:mb-2">
-            <img src="/assets/datacamp.png" alt="Data Camp" className="w-48 md:w-80" />
+            <Carousel images={startpageImages} interval={1500} />
           </div>
           <div className="w-full md:w-1/2 text-center md:text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white text-center">Laid-Back Data</h1>
@@ -54,7 +44,7 @@ export default function LandingPage() {
             <p className="text-lg md:text-xl text-white mt-4">Dive in into the data world without anxiety! Cause you're here to learn the basic of data while being chill and having fun!</p>
           </div>
           <div className="w-full flex transition-transform duration-500 ease-in-out md:w-1/2 flex-col items-center relative space-y-6">
-            <img src={landingpageImages[current].src} alt={landingpageImages[current].alt} className={`w-48 md:w-56 relative mb-4 ${fade}`} />
+            <Carousel images={landingpageImages} interval={1500} />
           </div>
         </div>
       </section>
