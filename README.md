@@ -18,7 +18,7 @@ Tools that been used for this project:</br>
 
 ## Deployment:
 
-Frontend: Vercel<br/>
+Frontend: Vercel</br>
 Backend: Supabase
 
 ## Prerequirement
@@ -58,7 +58,7 @@ npm run dev
 Users can watch videos and can access documentation. The subject of each course
 represents the introduction of Data Literacy and Artificial Inteligence within the tools that they need<br/>
 
-- Games
+- Games</br>
   Not only learning, users also play games to sharpen thair learning skills and can be use in the real world
 
   ![Laid-Back Data - Quiz](/docs/quizpage.png)
