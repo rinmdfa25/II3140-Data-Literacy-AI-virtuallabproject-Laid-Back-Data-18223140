@@ -18,7 +18,7 @@ Tools that been used for this project:</br>
 
 ## Deployment:
 
-Frontend: Vercel
+Frontend: Vercel<br/>
 Backend: Supabase
 
 ## Prerequirement
