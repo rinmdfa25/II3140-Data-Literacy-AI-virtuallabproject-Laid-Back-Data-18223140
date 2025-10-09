@@ -1,40 +1,54 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# II3140 - Pengembangan Aplikasi Web dan Mobile
 
-## Getting Started
+## Data Literacy & Artificial Inteligence Virtual Lab - Laid-Back Data
 
-First, run the development server:
+![Laid-Back-Data](/docs/landingpage.png)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## About
+
+Laid-Back Data is an inovation of virtualization lab of WI2002 - Data Literation & Articial Inteligence subjects. Laid-Back Data were inspired from one of the interactive learning of Data Science named Data Camp and a TV animation named Laid-Back Camp. Laid-Back Data brought to you into the introduction of Data Literacy and the world of A.I. while you learn it without any anxiety<br/>
+
+## Prerequirement
+
+Before you run it in your local machine, make sure you have these installed:<br/>
+
+- NodeJS : v14.x.x or higher</br>
+
+## How to Use it
+
+- Clone this Repository into your local machine
+
+```
+git clone https://github.com/rinmdfa25/II3140-Data-Literacy-AI-virtuallabproject-Laid-Back-Data-18223140.git
+cd virtual-lab-project
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Install the dependencise
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+```
+npm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Run in your local machine
 
-## Learn More
+```
+npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+- Open with Live Server or open the index.html file
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Features
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Interactive Learning System
+  ![Laid-Back Data - learning](/docs/learningpage-videocourse.png)
 
-## Deploy on Vercel
+Users can watch videos and can access documentation. The subject of each course
+represents the introduction of Data Literacy and Artificial Inteligence within the tools that they need<br/>
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Quizzez
+  ![Laid-Back Data - Quiz](/docs/quizpage.png)
+  After users learn of the basic fundamental of Data Literacy and Artificial Inteligence. Users have challenge of answering all the quiz questions to help remembering of what they're learned</br>
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-
-## Product Name
-
-Laid-Back Data
+- Matching Words and Image
+  ![Laid-Back Data - Matching Words](/docs/matchingpage.png)
+  Not only Quiz, users also have challenge of matching the words that being shown on and match the right word with the image
