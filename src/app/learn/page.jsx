@@ -107,37 +107,42 @@ export default function LearnPage() {
         </div>
       </section>
 
+      {/* Cheatsheets Section */}
       <section className="cheatsheets" id="cheatsheets" style={{ marginTop: "3rem" }}>
-        <div className="from-green-400 to-teal-800 bg-gradient-to-r min-h-screen flex flex-col md:flex-row items-center justify-center md:gap-6">
-          <div className="w-full md:w-1/2 flex flex-col items-center gap-4">
-            <a href="https://numpy.org/doc/stable/" className="bg-white text-teal-600 px-6 py-3 rounded-full font-semibold hover:bg-gray-200 transition-colors inline-block text-center" target="_blank" rel="noopener noreferrer">
-              NumPy
-            </a>
-            <a href="https://pandas.pydata.org/docs/" className="bg-white text-teal-600 px-6 py-3 rounded-full font-semibold hover:bg-gray-200 transition-colors inline-block text-center" target="_blank" rel="noopener noreferrer">
-              Pandas
+        <div className="bg-transparent py-10 px-4 md:px-12 max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+          <div className="w-full md:w-1/2 grid grid-cols-2 gap-6 place-items-center">
+            <a href="https://numpy.org/doc/stable/" className="bg-transparent text-teal-600 px-4 py-3 rounded-xl font-semibold hover:bg-gray-200 transition-colors flex flex-col items-center w-full" target="_blank" rel="noopener noreferrer">
+              <img src="/assets/numpy.png" alt="NumPy" className="w-full h-20 object-contain mb-2" />
             </a>
             <a
-              href="https://matplotlib.org/stable/contents.html"
-              className="bg-white text-teal-600 px-6 py-3 rounded-full font-semibold hover:bg-gray-200 transition-colors inline-block text-center"
+              href="https://pandas.pydata.org/docs/"
+              className="bg-transparent text-teal-600 px-4 py-3 rounded-xl font-semibold hover:bg-gray-200 transition-colors flex flex-col items-center w-full"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Matplotlib
+              <img src="/assets/pandas.png" alt="Pandas" className="w-full h-20 object-contain mb-2" />
             </a>
-            <a href="https://seaborn.pydata.org/" className="bg-white text-teal-600 px-6 py-3 rounded-full font-semibold hover:bg-gray-200 transition-colors inline-block text-center" target="_blank" rel="noopener noreferrer">
-              Seaborn
+            <a
+              href="https://matplotlib.org/stable/contents.html"
+              className="bg-transparent text-teal-600 px-4 py-3 rounded-xl font-semibold hover:bg-gray-200 transition-colors flex flex-col items-center w-full"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src="/assets/matplotlib.svg" alt="Matplotlib" className="w-full h-20 object-contain mb-2" />
+            </a>
+            <a href="https://seaborn.pydata.org/" className="bg-transparent text-teal-600 px-4 py-3 rounded-xl font-semibold hover:bg-gray-200 transition-colors flex flex-col items-center w-full" target="_blank" rel="noopener noreferrer">
+              <img src="/assets/seaborn.svg" alt="Seaborn" className="w-full h-20 object-contain mb-2" />
             </a>
           </div>
-          <div className="w-full md:w-1/2 text-center justify-self-auto md:text-left">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white text-start">Hooray! You've already watched the videos!</h1>
-            <p className="text-lg mb-8 md:text-lg text-white justify-normal">
-              Now...Rin found something to help your knowledge. She found tools documentation to help you memorize and understand what you have been through. For more information, you can learn more from pandas and matplotlib documentation.
-              Using the button on the left side!
+          <div className="w-full md:w-1/2 text-center md:text-left">
+            <h1 className="text-3xl md:text-4xl font-bold mb-4 text-white">Hooray! You've already watched the videos!</h1>
+            <p className="text-lg mb-8 text-white">
+              Now... Rin found something to help your knowledge. She found tools documentation to help you memorize and understand what you have been through. For more information, you can learn more from pandas and matplotlib documentation
+              using the buttons on the left!
             </p>
           </div>
         </div>
       </section>
-      {/* Game Time */}
       <section className="game-time" id="game-time" style={{ marginTop: "3rem" }}>
         <div className="from-green-400 to-teal-800 bg-gradient-to-r min-h-screen flex flex-col md:flex-row items-center justify-center md:gap-6">
           <div className="w-full md:w-1/2 text-center items-center md:text-center">

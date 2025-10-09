@@ -16,13 +16,18 @@ export default function EndPage() {
               others to learn about data too. Rin wants you to learn more with the button below!
             </p>
             <div className="w-full md:w-1/2 flex flex-col items-center justify-self-center text-center md:text-center gap-4">
-              <a href="https://www.kaggle.com/" className="bg-white text-teal-600 px-6 py-3 rounded-full font-semibold hover:bg-gray-200 transition-colors inline-block text-center">
+              <a href="https://www.kaggle.com/" className="bg-white text-teal-600 px-6 py-3 rounded-full font-semibold hover:bg-gray-200 transition-colors inline-block text-center" target="_blank" rel="noopener noreferrer">
                 Learn More in Kaggle!!!
               </a>
-              <a href="https://www.datacamp.com/" className="bg-white text-teal-600 px-6 py-3 rounded-full font-semibold hover:bg-gray-200 transition-colors inline-block text-center mt-4">
+              <a href="https://www.datacamp.com/" className="bg-white text-teal-600 px-6 py-3 rounded-full font-semibold hover:bg-gray-200 transition-colors inline-block text-center mt-4" target="_blank" rel="noopener noreferrer">
                 Learn More in DataCamp!!!
               </a>
-              <a href="https://www.coursera.org/courses?query=free&skills=Data%20Science" className="bg-white text-teal-600 px-6 py-3 rounded-full font-semibold hover:bg-gray-200 transition-colors inline-block text-center mt-4">
+              <a
+                href="https://www.coursera.org/courses?query=free&skills=Data%20Science"
+                className="bg-white text-teal-600 px-6 py-3 rounded-full font-semibold hover:bg-gray-200 transition-colors inline-block text-center mt-4"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Learn More in Coursera!!!
               </a>
             </div>
