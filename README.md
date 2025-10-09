@@ -8,6 +8,17 @@
 
 Laid-Back Data is an inovation of virtualization lab of WI2002 - Data Literation & Articial Inteligence subjects. Laid-Back Data were inspired from one of the interactive learning of Data Science named Data Camp and a TV animation named Laid-Back Camp. Laid-Back Data brought to you into the introduction of Data Literacy and the world of A.I. while you learn it without any anxiety<br/>
 
+## Tools: 
+Tools that been used for this project:</br>
+- NextJS: v15.5.4
+- React: v19.1.0
+- TailwindCSS: v3.4.18
+  
+
+## Deployment:
+Frontend: Vercel
+Backend: Supabase
+
 ## Prerequirement
 
 Before you run it in your local machine, make sure you have these installed:<br/>
@@ -23,7 +34,7 @@ git clone https://github.com/rinmdfa25/II3140-Data-Literacy-AI-virtuallabproject
 cd virtual-lab-project
 ```
 
-- Install the dependencise
+- Install the dependencies
 
 ```
 npm install
@@ -35,7 +46,7 @@ npm install
 npm run dev
 ```
 
-- Open with Live Server or open the index.html file
+- Open with Live Server or with your browser 
 
 ## Features
 
