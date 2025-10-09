@@ -18,14 +18,15 @@ Tools that been used for this project:</br>
 
 ## Deployment:
 
-Frontend: Vercel</br>
-Backend: Supabase
+- Frontend: Vercel
+- Backend: Supabase
 
 ## Prerequirement
 
 Before you run it in your local machine, make sure you have these installed:<br/>
 
-- NodeJS : v14.x.x or higher</br>
+- NodeJS : v14.x.x or higher
+- Free Supabase Account (Create on https://supabase.com/)</br>
 
 ## How to Use it
 
@@ -42,6 +43,32 @@ cd virtual-lab-project
 npm install
 ```
 
+- Set up the Supabase
+
+Go to Supabase.io(https://supabase.com/), create a new project, and wait for the database to be set up.<br/>
+
+Once your project is ready, go to the SQL Editor in the dashboard.<br/>
+
+Run the SQL queries found in the schema.sql file in this repository to create the necessary tables (scores, progress, etc.).<br/>
+
+- Configure your environment variable
+
+In the root of the project, find the .env.example file. This is your template for the required keys.<br/>
+
+Create a new file in the same location and name it .env.local.<br/>
+
+Go to your new Supabase project's Settings > API.<br/>
+
+Copy your Project URL, anon public key, and service_role secret key.<br/>
+
+Paste these values into your new .env.local file:<br/>
+
+```
+NEXT_PUBLIC_SUPABASE_URL=(YOUR_SUPABASE_URL)
+NEXT_PUBLIC_SUPABASE_ANON_KEY=(YOUR_SUPABASE_ANON_KEY)
+SUPABASE_SERVICE_ROLE_KEY=(YOUR_SUPABASE_SERVICE_ROLE_KEY)
+```
+
 - Run in your local machine
 
 ```
@@ -54,9 +81,7 @@ npm run dev
 
 - Interactive Learning System
   ![Laid-Back Data - learning](/docs/learningpage.png)
-
-Users can watch videos and can access documentation. The subject of each course
-represents the introduction of Data Literacy and Artificial Inteligence within the tools that they need<br/>
+  Users can watch videos and can access documentation. The subject of each course represents the introduction of Data Literacy and Artificial Inteligence within the tool that they need<br/>
 
 - Games</br>
   Not only learning, users also play games to sharpen thair learning skills and can be use in the real world
@@ -67,4 +92,6 @@ represents the introduction of Data Literacy and Artificial Inteligence within t
   ![Laid-Back Data - Matching Words](/docs/matchingpage.png)
   Not only Quiz, users also have challenge of matching the words that being shown on and match the right word with the image</br>
 
-Disclaimer!: All Assets were not from my work. It's reference from Freepik (https://www.freepik.com/) and Pixiv (https://www.pixiv.net/en/). All Assets were used in the purpose of education use. Not for commercial use.
+## Disclaimer!!!
+
+All Assets were not from my work. It references from Freepik (https://www.freepik.com/) and Pixiv (https://www.pixiv.net/en/). All Assets were used in the purpose of education use. Not for commercial use.
