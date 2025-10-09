@@ -7,7 +7,7 @@ import Image from "next/image";
 function ProgressBar({ score }) {
   return (
     <div className="w-full bg-gray-700 rounded-full h-4 mt-2 border-2 border-slate-400">
-      <div className="bg-pink-400 h-full rounded-full transition-all duration-500" style={{ width: `${score}%` }}></div>
+      <div className="bg-cyan-300 h-full rounded-full transition-all duration-500" style={{ width: `${score}%` }}></div>
     </div>
   );
 }
