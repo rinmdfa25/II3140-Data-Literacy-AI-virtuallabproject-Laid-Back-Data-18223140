@@ -1,0 +1,293 @@
+openapi: 3.0.4
+info:
+  title: II3140-Data-Literacy-AI-virtuallabproject-Laid-Back-Data-18223140 - OpenAPI 3.0
+  description: |-
+    Ini merupakan dokumentasi mengenai projek II3140-Data-Literacy-AI-virtuallabproject-Laid-Back-Data-18223140. Dokumentasi ini bertujuan untuk membantu developer lainnya agar dapat memahami layanan-layanan apa saja yang disediakan oleh API yang dibuat untuk MiniCompsci. Dokumentasi ini juga akan menjelaskan bagaimana API-API dapat digunakan dan bagaimana struktur dari API tersebut dibangun.
+
+    Some useful links:
+    - [The website repository](https://github.com/rinmdfa25/II3140-Data-Literacy-AI-virtuallabproject-Laid-Back-Data-18223140)
+    - [The BaaS of this project]()
+  termsOfService: https://swagger.io/terms/
+  contact:
+    email: apiteam@swagger.io
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.12
+externalDocs:
+  description: Find out more about Swagger
+  url: https://swagger.io
+servers:
+  - url: https://petstore3.swagger.io/api/v3
+tags:
+  - name: scores
+    description: Tentang skor 
+    externalDocs:
+      description: Find out more
+      url: https://swagger.io
+  - name: progress
+    description: Tentang progress
+    externalDocs:
+      description: Find out more
+      url: https://swagger.io
+  - name: OAuth
+    description: Tentang OAuth
+    externalDocs:
+      description: Find out more
+      url: https://swagger.io
+paths:
+  /scores/highestscore:
+    get:
+      tags:
+        - scores
+      summary: Mengambil skor tertinggi pengguna untuk jenis permainan tertentu dari database Supabase
+      operationId: getHighestScore
+      parameters:
+        - in: query
+          name: game_type
+          required: true
+          schema:
+            type: string
+            example: "memory_game"
+          description: Jenis permainan untuk mengambil skor tertinggi
+      responses:
+        '200':
+          description: Skor tertinggi berhasil diambil
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  highestScore:
+                    type: number
+                    example: 1200
+                    description: Skor tertinggi pengguna untuk game_type tersebut (0 jika belum ada)
+        '400':
+          description: Parameter `game_type` tidak disertakan
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "No game type were defined."
+        '401':
+          description: Pengguna tidak terautentikasi
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "User Undefined"
+        '500':
+          description: Terjadi kesalahan pada sisi Supabase
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Database error message from Supabase"
+  /scores:
+    post:
+      tags:
+        - scores
+      summary: Menyimpan skor ke database scores dengan client Supabase
+      operationId: insertScore
+      requestBody:
+        required: true
+        description: Data skor yang akan disimpan ke Supabase
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - score
+                - game_type
+              properties:
+                score:
+                  type: number
+                  example: 1200
+                  description: Nilai skor yang dicapai pemain
+                game_type:
+                  type: string
+                  example: "memory_game"
+                  description: Jenis permainan
+      responses:
+        '200':
+          description: Skor berhasil disimpan
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Score saved successfully"
+        '401':
+          description: Pengguna tidak terautentikasi
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "You must be logged in to save a score."
+        '500':
+          description: Terjadi kesalahan pada sisi Supabase
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Failed to insert data into Supabase."
+  /progress:
+    get:
+      tags:
+        - progress
+      summary: Mengambil daftar video yang telah diselesaikan oleh pengguna dari database progress pada Supabase
+      operationId: getUserProgress
+      responses:
+        '200':
+          description: Daftar video yang telah diselesaikan berhasil diambil
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  completedVideos:
+                    type: array
+                    description: Daftar ID video yang telah diselesaikan pengguna
+                    items:
+                      type: string
+                    example: ["intro_1", "lesson_2", "quiz_final"]
+        '401':
+          description: Pengguna tidak terautentikasi
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "You must be logged in to view progress."
+        '500':
+          description: Terjadi kesalahan pada sisi Supabase
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Database error message from Supabase"
+    post:
+      tags:
+        - progress
+      summary: Mengupdate database progress dari Supabase bahwa video dengan id tertentu sudah selesai ditonton
+      requestBody:
+        required: true
+        description: Data ID video yang akan diperbarui
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - video_id
+              properties:
+                video_id:
+                  type: string
+                  example: "AI Literacy"
+                  description: ID unik sebuah dari sebuah video
+      operationId: postUserProgress
+      responses:
+        '200':
+          description: Berhasil mengupdate progress
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Progress saved successfully"
+        '401':
+          description: Pengguna tidak terautentikasi
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Unauthorized"
+        '500':
+          description: Terjadi kesalahan pada sisi Supabase
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Database error message from Supabase"  
+        '23505':
+          description: Video sudah diupdate dan tidak perlu lagi untuk mengupdate progress
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Video already marked as watched."   
+  /
+components:
+  schemas:
+    Scores:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 10
+        user_id:
+          type: string
+          format: 36-character string
+          example: c75f7c66-e858-47d6-bb82-7ea5547c800c, 550e8400-e29b-41d4-a716-446655440000, and acde070d-8c4c-4f0d-9d8a-162843c10333
+        score:
+          type: integer
+          format: int32
+          example: 90
+        game_type:
+          type: string
+          format: game_type
+        created_at:
+          type: string 
+          description: Timestamp with timezone
+          example: 2016-06-22 22:10:25-04
+      xml:
+        name: scores
+    Progress:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+        user_id:
+          type: string
+          format: 36-character string
+          example: c75f7c66-e858-47d6-bb82-7ea5547c800c, 550e8400-e29b-41d4-a716-446655440000, and acde070d-8c4c-4f0d-9d8a-162843c10333
+        video_id:
+          type: string
+          format: video_id
+        created_at:
+          type: string 
